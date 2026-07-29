@@ -71,3 +71,39 @@ export function calculateWeeklyCompletionPercent(entries: HabitEntryLike[]): num
   const completed = entries.filter((e) => e.completed).length;
   return Math.round((completed / entries.length) * 100);
 }
+
+export interface WeekTrendPoint {
+  weekStart: string;
+  percent: number;
+}
+
+/** Twelve-week completion trend, most recent week last. Weeks with no entries show 0%. */
+export function calculateTwelveWeekTrend(entries: HabitEntryLike[], asOf: Date = new Date()): WeekTrendPoint[] {
+  const byDate = new Map(entries.map((e) => [e.entryDate, e.completed]));
+  const weeks: WeekTrendPoint[] = [];
+
+  for (let weekOffset = 11; weekOffset >= 0; weekOffset--) {
+    const weekStart = new Date(asOf);
+    weekStart.setHours(0, 0, 0, 0);
+    weekStart.setDate(weekStart.getDate() - weekOffset * 7 - weekStart.getDay());
+
+    let completedCount = 0;
+    let totalCount = 0;
+    for (let day = 0; day < 7; day++) {
+      const date = new Date(weekStart);
+      date.setDate(date.getDate() + day);
+      const iso = date.toISOString().slice(0, 10);
+      if (byDate.has(iso)) {
+        totalCount += 1;
+        if (byDate.get(iso)) completedCount += 1;
+      }
+    }
+
+    weeks.push({
+      weekStart: weekStart.toISOString().slice(0, 10),
+      percent: totalCount === 0 ? 0 : Math.round((completedCount / totalCount) * 100),
+    });
+  }
+
+  return weeks;
+}
