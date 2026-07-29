@@ -11,11 +11,14 @@ export default async function AdminSourcesPage() {
 
   return (
     <div className="container-page py-10">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Owner-only administration</p>
+      <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase">
+        Owner-only administration
+      </p>
       <h1 className="mt-2 font-serif text-3xl font-semibold">Source &amp; quote administration</h1>
-      <p className="mt-2 max-w-2xl rounded-md bg-caution-bg p-3 text-sm text-caution">
-        This screen is protected only by role-based access control within the application, not by a separate
-        hardened admin surface. Treat it as a trusted-operator tool, not a public-facing feature.
+      <p className="bg-caution-bg text-caution mt-2 max-w-2xl rounded-md p-3 text-sm">
+        This screen is protected only by role-based access control within the application, not by a
+        separate hardened admin surface. Treat it as a trusted-operator tool, not a public-facing
+        feature.
       </p>
 
       <div className="mt-8">

@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, ListChecks, NotebookPen, MoreHorizontal, GraduationCap } from "lucide-react";
+import {
+  LayoutDashboard,
+  ListChecks,
+  NotebookPen,
+  MoreHorizontal,
+  GraduationCap,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const items = [
@@ -18,7 +24,7 @@ export function MobileNav() {
   return (
     <nav
       aria-label="Primary"
-      className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t border-border bg-surface/95 backdrop-blur md:hidden"
+      className="border-border bg-surface/95 fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t backdrop-blur md:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       {items.map(({ href, label, icon: Icon }) => {
@@ -29,7 +35,7 @@ export function MobileNav() {
             href={href}
             aria-current={active ? "page" : undefined}
             className={cn(
-              "flex min-h-14 flex-col items-center justify-center gap-1 text-xs text-slate",
+              "text-slate flex min-h-14 flex-col items-center justify-center gap-1 text-xs",
               active && "text-foreground",
             )}
           >

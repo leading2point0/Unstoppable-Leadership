@@ -59,16 +59,19 @@ type PublicEnv = z.infer<typeof publicEnvSchema>;
 function loadServerEnv(): ServerEnv {
   const parsed = serverEnvSchema.safeParse(process.env);
   if (!parsed.success) {
-    const issues = parsed.error.issues.map((i) => `  - ${i.path.join(".")}: ${i.message}`).join("\n");
+    const issues = parsed.error.issues
+      .map((i) => `  - ${i.path.join(".")}: ${i.message}`)
+      .join("\n");
     const message = `Invalid or missing environment variables:\n${issues}`;
     if (process.env.NODE_ENV === "production") {
       throw new Error(message);
     }
-     
+
     console.warn(`[env] ${message}`);
     return serverEnvSchema.parse({
       ...process.env,
-      DATABASE_URL: process.env.DATABASE_URL ?? "postgresql://user:password@localhost:5432/unstoppable",
+      DATABASE_URL:
+        process.env.DATABASE_URL ?? "postgresql://user:password@localhost:5432/unstoppable",
       AUTH_SECRET: process.env.AUTH_SECRET ?? "development-only-insecure-secret",
     });
   }
@@ -85,4 +88,5 @@ function loadPublicEnv(): PublicEnv {
 export const serverEnv = loadServerEnv();
 export const publicEnv = loadPublicEnv();
 
-export const appVersion = serverEnv.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? serverEnv.APP_VERSION ?? "development";
+export const appVersion =
+  serverEnv.RAILWAY_GIT_COMMIT_SHA?.slice(0, 7) ?? serverEnv.APP_VERSION ?? "development";

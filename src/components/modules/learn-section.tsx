@@ -24,7 +24,6 @@ export function LearnSection({
   function handleComplete() {
     startTransition(async () => {
       await markLearnCompleteAction(programId, module.slug);
-      onAdvance();
     });
   }
 
@@ -37,7 +36,10 @@ export function LearnSection({
             const insight = module.insights[index % Math.max(module.insights.length, 1)];
             return (
               <li key={point} className="flex items-start gap-2">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
+                <span
+                  className="bg-accent mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
+                  aria-hidden="true"
+                />
                 <span>
                   {point}
                   {insight && index < module.insights.length && (
@@ -53,27 +55,27 @@ export function LearnSection({
       <section className="grid gap-6 md:grid-cols-2">
         <div>
           <h3 className="font-serif text-lg font-semibold">Why this matters</h3>
-          <p className="mt-2 text-slate">{module.whyItMatters}</p>
+          <p className="text-slate mt-2">{module.whyItMatters}</p>
         </div>
         <div>
           <h3 className="font-serif text-lg font-semibold">Where people get this wrong</h3>
-          <p className="mt-2 text-slate">{module.whereItGoesWrong}</p>
+          <p className="text-slate mt-2">{module.whereItGoesWrong}</p>
         </div>
         <div>
           <h3 className="font-serif text-lg font-semibold">Leadership application</h3>
-          <p className="mt-2 text-slate">{module.leadershipApplication}</p>
+          <p className="text-slate mt-2">{module.leadershipApplication}</p>
         </div>
         <div>
           <h3 className="font-serif text-lg font-semibold">Personal application</h3>
-          <p className="mt-2 text-slate">{module.personalApplication}</p>
+          <p className="text-slate mt-2">{module.personalApplication}</p>
         </div>
       </section>
 
-      <p className="text-xs text-slate-muted">{module.sourceNotes}</p>
+      <p className="text-slate-muted text-xs">{module.sourceNotes}</p>
 
-      <div className="flex items-center gap-3 border-t border-border pt-6">
+      <div className="border-border flex items-center gap-3 border-t pt-6">
         {completed ? (
-          <span className="flex items-center gap-2 text-sm text-success">
+          <span className="text-success flex items-center gap-2 text-sm">
             <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Marked as reviewed
           </span>
         ) : (
@@ -81,7 +83,11 @@ export function LearnSection({
             {pending ? "Saving…" : "I've reviewed the material"}
           </Button>
         )}
-        {completed && <Button variant="outline" onClick={onAdvance}>Continue to Assess</Button>}
+        {completed && (
+          <Button variant="outline" onClick={onAdvance}>
+            Continue to Assess
+          </Button>
+        )}
       </div>
     </div>
   );

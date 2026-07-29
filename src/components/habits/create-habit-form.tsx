@@ -36,9 +36,19 @@ export function CreateHabitForm({ programId }: { programId: string }) {
         <p className="text-sm font-medium">Add a habit</p>
         <div className="grid gap-3 sm:grid-cols-[1fr_1fr_1fr_auto]">
           <Input placeholder="Habit name" value={name} onChange={(e) => setName(e.target.value)} />
-          <Input placeholder="Trigger (what cues it)" value={trigger} onChange={(e) => setTrigger(e.target.value)} />
-          <Input placeholder="Minimum version (for bad days)" value={minimumVersion} onChange={(e) => setMinimumVersion(e.target.value)} />
-          <Button onClick={handleCreate} disabled={pending || !name.trim()}>Add</Button>
+          <Input
+            placeholder="Trigger (what cues it)"
+            value={trigger}
+            onChange={(e) => setTrigger(e.target.value)}
+          />
+          <Input
+            placeholder="Minimum version (for bad days)"
+            value={minimumVersion}
+            onChange={(e) => setMinimumVersion(e.target.value)}
+          />
+          <Button onClick={handleCreate} disabled={pending || !name.trim()}>
+            Add
+          </Button>
         </div>
       </CardContent>
     </Card>

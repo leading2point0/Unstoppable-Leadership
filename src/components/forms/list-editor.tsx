@@ -23,6 +23,7 @@ export function ListEditor({
           <div key={index} className="flex gap-2">
             <Input
               value={item}
+              aria-label={label ? `${label} ${index + 1}` : `Item ${index + 1}`}
               onChange={(e) => {
                 const next = [...items];
                 next[index] = e.target.value;

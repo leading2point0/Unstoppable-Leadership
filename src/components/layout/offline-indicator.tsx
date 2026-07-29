@@ -24,10 +24,11 @@ export function OfflineIndicator() {
   return (
     <div
       role="status"
-      className="flex items-center justify-center gap-2 bg-caution-bg px-4 py-2 text-sm text-caution print:hidden"
+      className="bg-caution-bg text-caution flex items-center justify-center gap-2 px-4 py-2 text-sm print:hidden"
     >
       <WifiOff className="h-4 w-4" aria-hidden="true" />
-      You&apos;re offline. Previously visited pages still work; changes will need a connection to save.
+      You&apos;re offline. Previously visited pages still work; changes will need a connection to
+      save.
     </div>
   );
 }

@@ -19,17 +19,17 @@ export function SignInForm() {
       <input type="hidden" name="callbackUrl" value={callbackUrl} />
 
       {registered && (
-        <p className="rounded-md bg-success-bg px-3 py-2 text-sm text-success" role="status">
+        <p className="bg-success-bg text-success rounded-md px-3 py-2 text-sm" role="status">
           Account created. Sign in to continue.
         </p>
       )}
       {reset && (
-        <p className="rounded-md bg-success-bg px-3 py-2 text-sm text-success" role="status">
+        <p className="bg-success-bg text-success rounded-md px-3 py-2 text-sm" role="status">
           Password updated. Sign in with your new password.
         </p>
       )}
       {state && !state.ok && (
-        <p className="rounded-md bg-critical-bg px-3 py-2 text-sm text-critical" role="alert">
+        <p className="bg-critical-bg text-critical rounded-md px-3 py-2 text-sm" role="alert">
           {state.message}
         </p>
       )}
@@ -41,11 +41,17 @@ export function SignInForm() {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <Label htmlFor="password">Password</Label>
-          <a href="/forgot-password" className="text-xs text-accent hover:underline">
+          <a href="/forgot-password" className="text-accent text-xs hover:underline">
             Forgot password?
           </a>
         </div>
-        <Input id="password" name="password" type="password" autoComplete="current-password" required />
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          autoComplete="current-password"
+          required
+        />
       </div>
       <Button type="submit" className="w-full" disabled={pending}>
         {pending ? "Signing in…" : "Sign in"}

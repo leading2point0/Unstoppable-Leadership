@@ -25,7 +25,13 @@ import {
  */
 export async function exportUserData(userId: string) {
   const [user] = await db
-    .select({ id: users.id, email: users.email, name: users.name, role: users.role, createdAt: users.createdAt })
+    .select({
+      id: users.id,
+      email: users.email,
+      name: users.name,
+      role: users.role,
+      createdAt: users.createdAt,
+    })
     .from(users)
     .where(eq(users.id, userId))
     .limit(1);
@@ -52,7 +58,10 @@ export async function exportUserData(userId: string) {
   ] = await Promise.all([
     db.select().from(moduleProgress).where(inArray(moduleProgress.programId, programIds)),
     db.select().from(assessments).where(inArray(assessments.programId, programIds)),
-    db.select().from(implementationActions).where(inArray(implementationActions.programId, programIds)),
+    db
+      .select()
+      .from(implementationActions)
+      .where(inArray(implementationActions.programId, programIds)),
     db.select().from(actionEvidence).where(inArray(actionEvidence.programId, programIds)),
     db.select().from(leadMeasures).where(inArray(leadMeasures.programId, programIds)),
     db.select().from(habits).where(inArray(habits.programId, programIds)),
@@ -65,12 +74,18 @@ export async function exportUserData(userId: string) {
 
   const assessmentIds = assessmentRows.map((a) => a.id);
   const assessmentResponseRows = assessmentIds.length
-    ? await db.select().from(assessmentResponses).where(inArray(assessmentResponses.assessmentId, assessmentIds))
+    ? await db
+        .select()
+        .from(assessmentResponses)
+        .where(inArray(assessmentResponses.assessmentId, assessmentIds))
     : [];
 
   const leadMeasureIds = leadMeasureRows.map((lm) => lm.id);
   const leadMeasureEntryRows = leadMeasureIds.length
-    ? await db.select().from(leadMeasureEntries).where(inArray(leadMeasureEntries.leadMeasureId, leadMeasureIds))
+    ? await db
+        .select()
+        .from(leadMeasureEntries)
+        .where(inArray(leadMeasureEntries.leadMeasureId, leadMeasureIds))
     : [];
 
   const habitIds = habitRows.map((h) => h.id);
@@ -87,13 +102,19 @@ export async function exportUserData(userId: string) {
       moduleProgress: progressRows.filter((r) => r.programId === program.id),
       assessments: assessmentRows
         .filter((a) => a.programId === program.id)
-        .map((a) => ({ ...a, responses: assessmentResponseRows.filter((r) => r.assessmentId === a.id) })),
+        .map((a) => ({
+          ...a,
+          responses: assessmentResponseRows.filter((r) => r.assessmentId === a.id),
+        })),
       actions: actionRows
         .filter((a) => a.programId === program.id)
         .map((a) => ({ ...a, evidence: evidenceRows.filter((e) => e.actionId === a.id) })),
       leadMeasures: leadMeasureRows
         .filter((lm) => lm.programId === program.id)
-        .map((lm) => ({ ...lm, entries: leadMeasureEntryRows.filter((e) => e.leadMeasureId === lm.id) })),
+        .map((lm) => ({
+          ...lm,
+          entries: leadMeasureEntryRows.filter((e) => e.leadMeasureId === lm.id),
+        })),
       habits: habitRows
         .filter((h) => h.programId === program.id)
         .map((h) => ({ ...h, entries: habitEntryRows.filter((e) => e.habitId === h.id) })),

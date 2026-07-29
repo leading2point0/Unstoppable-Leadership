@@ -16,7 +16,7 @@ export const module04: ModuleDefinition = {
   whyItMatters:
     "A goal that only exists as a feeling or a wish rarely survives contact with a busy week. Converting it into a measurable target with a deadline and a lead measure is what makes daily prioritization possible.",
   whereItGoesWrong:
-    "People frequently set a lag measure (\"lose 20 pounds,\" \"grow revenue 30%\") without ever identifying the lead measure — the specific, controllable daily or weekly action that actually produces the result.",
+    'People frequently set a lag measure ("lose 20 pounds," "grow revenue 30%") without ever identifying the lead measure — the specific, controllable daily or weekly action that actually produces the result.',
   leadershipApplication:
     "Teams execute better when leaders translate strategic goals into a small number of lead measures everyone can act on this week, rather than only tracking the lagging scoreboard.",
   personalApplication:
@@ -64,7 +64,8 @@ export const module04: ModuleDefinition = {
       id: "step-5",
       title: "Schedule the first recurring action",
       purpose: "Move the lead measure from intention to calendar.",
-      instructions: "Put a specific recurring time on your calendar this week for the lead-measure action.",
+      instructions:
+        "Put a specific recurring time on your calendar this week for the lead-measure action.",
       defaultEstimatedEffortMinutes: 10,
     },
   ],

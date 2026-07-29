@@ -18,8 +18,10 @@ export default async function ActionsPage() {
     return (
       <div className="container-page py-16 text-center">
         <h1 className="font-serif text-3xl font-semibold">No program yet</h1>
-        <p className="mt-2 text-slate">Start your program to begin managing actions.</p>
-        <Button asChild className="mt-6"><Link href="/program/new">Start My Program</Link></Button>
+        <p className="text-slate mt-2">Start your program to begin managing actions.</p>
+        <Button asChild className="mt-6">
+          <Link href="/program/new">Start My Program</Link>
+        </Button>
       </div>
     );
   }
@@ -28,11 +30,11 @@ export default async function ActionsPage() {
 
   return (
     <div className="container-page py-10">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Actions</p>
+      <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase">Actions</p>
       <h1 className="mt-2 font-serif text-3xl font-semibold">Every commitment, in one place</h1>
-      <p className="mt-2 max-w-2xl text-slate">
-        A vague task creates avoidance. Give each action a next physical action specific enough to start without
-        thinking.
+      <p className="text-slate mt-2 max-w-2xl">
+        A vague task creates avoidance. Give each action a next physical action specific enough to
+        start without thinking.
       </p>
       <div className="mt-8">
         <ActionsBoard programId={program.id} actions={actions} />

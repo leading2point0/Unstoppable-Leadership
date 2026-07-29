@@ -2,6 +2,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { quoteRecords, sourceRecords } from "@/db/schema";
 import type { QuoteRecordInput, SourceRecordInput } from "@/schemas/source";
+import { canDisplayQuotePublicly } from "@/services/quotes";
 
 export type SourceRecordRow = typeof sourceRecords.$inferSelect;
 export type QuoteRecordRow = typeof quoteRecords.$inferSelect;
@@ -11,7 +12,13 @@ export async function listPublicSources(): Promise<SourceRecordRow[]> {
   return db
     .select()
     .from(sourceRecords)
-    .where(and(eq(sourceRecords.verified, true), eq(sourceRecords.isPublic, true), eq(sourceRecords.isOutdated, false)))
+    .where(
+      and(
+        eq(sourceRecords.verified, true),
+        eq(sourceRecords.isPublic, true),
+        eq(sourceRecords.isOutdated, false),
+      ),
+    )
     .orderBy(desc(sourceRecords.createdAt));
 }
 
@@ -21,7 +28,15 @@ export async function listPublicSources(): Promise<SourceRecordRow[]> {
  * never be displayed publicly" rule, not just a UI-level filter.
  */
 export async function listPublicQuotes(): Promise<QuoteRecordRow[]> {
-  return db.select().from(quoteRecords).where(eq(quoteRecords.verifiedByOwner, true)).orderBy(desc(quoteRecords.createdAt));
+  const rows = await db
+    .select()
+    .from(quoteRecords)
+    .where(eq(quoteRecords.verifiedByOwner, true))
+    .orderBy(desc(quoteRecords.createdAt));
+  // Defense in depth: re-check the rule in application code (see
+  // src/services/quotes.ts) even though the SQL WHERE clause above already
+  // enforces it, so a future query change can't silently regress this.
+  return rows.filter(canDisplayQuotePublicly);
 }
 
 export async function listAllSourcesForAdmin(): Promise<SourceRecordRow[]> {
@@ -32,7 +47,10 @@ export async function listAllQuotesForAdmin(): Promise<QuoteRecordRow[]> {
   return db.select().from(quoteRecords).orderBy(desc(quoteRecords.createdAt));
 }
 
-export async function createSource(userId: string, input: SourceRecordInput): Promise<SourceRecordRow> {
+export async function createSource(
+  userId: string,
+  input: SourceRecordInput,
+): Promise<SourceRecordRow> {
   const [row] = await db
     .insert(sourceRecords)
     .values({ ...input, url: input.url || undefined, createdById: userId })
@@ -40,7 +58,10 @@ export async function createSource(userId: string, input: SourceRecordInput): Pr
   return row;
 }
 
-export async function updateSource(id: string, input: Partial<SourceRecordInput>): Promise<SourceRecordRow> {
+export async function updateSource(
+  id: string,
+  input: Partial<SourceRecordInput>,
+): Promise<SourceRecordRow> {
   const [row] = await db
     .update(sourceRecords)
     .set({ ...input, url: input.url || undefined })
@@ -50,17 +71,29 @@ export async function updateSource(id: string, input: Partial<SourceRecordInput>
 }
 
 export async function verifySource(id: string): Promise<SourceRecordRow> {
-  const [row] = await db.update(sourceRecords).set({ verified: true }).where(eq(sourceRecords.id, id)).returning();
+  const [row] = await db
+    .update(sourceRecords)
+    .set({ verified: true })
+    .where(eq(sourceRecords.id, id))
+    .returning();
   return row;
 }
 
 export async function markSourceOutdated(id: string, outdated: boolean): Promise<SourceRecordRow> {
-  const [row] = await db.update(sourceRecords).set({ isOutdated: outdated }).where(eq(sourceRecords.id, id)).returning();
+  const [row] = await db
+    .update(sourceRecords)
+    .set({ isOutdated: outdated })
+    .where(eq(sourceRecords.id, id))
+    .returning();
   return row;
 }
 
 export async function setSourcePublic(id: string, isPublic: boolean): Promise<SourceRecordRow> {
-  const [row] = await db.update(sourceRecords).set({ isPublic }).where(eq(sourceRecords.id, id)).returning();
+  const [row] = await db
+    .update(sourceRecords)
+    .set({ isPublic })
+    .where(eq(sourceRecords.id, id))
+    .returning();
   return row;
 }
 

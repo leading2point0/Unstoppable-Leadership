@@ -8,7 +8,7 @@ export const createProgramSchema = z.object({
   usageType: z.enum(["individual", "leadership-team"]),
   startDate: z.string().min(1, "Choose a start date."),
   preferredReviewDay: z.number().int().min(0).max(6),
-  reminderTime: z.string().optional(),
+  reminderTime: z.string().max(20).optional(),
   primaryLifeArea: z.string().max(120).optional(),
   currentGoal: z.string().max(500).optional(),
   challengeLevel: z.enum(challengeLevelValues),

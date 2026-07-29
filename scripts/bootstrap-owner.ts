@@ -31,7 +31,9 @@ async function main() {
   }
 
   if (!isPasswordStrongEnough(password)) {
-    console.error("BOOTSTRAP_OWNER_PASSWORD is too weak. Use at least 12 characters with letters and a number/symbol.");
+    console.error(
+      "BOOTSTRAP_OWNER_PASSWORD is too weak. Use at least 12 characters with letters and a number/symbol.",
+    );
     process.exitCode = 1;
     return;
   }
@@ -42,9 +44,15 @@ async function main() {
     return;
   }
 
-  const [existingByEmail] = await db.select().from(users).where(eq(users.email, email.toLowerCase())).limit(1);
+  const [existingByEmail] = await db
+    .select()
+    .from(users)
+    .where(eq(users.email, email.toLowerCase()))
+    .limit(1);
   if (existingByEmail) {
-    console.error(`A user with email ${email} already exists but is not an owner. Refusing to overwrite.`);
+    console.error(
+      `A user with email ${email} already exists but is not an owner. Refusing to overwrite.`,
+    );
     process.exitCode = 1;
     return;
   }
@@ -61,10 +69,16 @@ async function main() {
     })
     .returning();
 
-  await logAuditEvent({ actorId: owner.id, action: "owner.bootstrap.created", details: { email: owner.email } });
+  await logAuditEvent({
+    actorId: owner.id,
+    action: "owner.bootstrap.created",
+    details: { email: owner.email },
+  });
 
   console.log(`Owner account created: ${owner.email}`);
-  console.log("Sign in, then remove BOOTSTRAP_OWNER_EMAIL / BOOTSTRAP_OWNER_PASSWORD from your environment.");
+  console.log(
+    "Sign in, then remove BOOTSTRAP_OWNER_EMAIL / BOOTSTRAP_OWNER_PASSWORD from your environment.",
+  );
 }
 
 main()

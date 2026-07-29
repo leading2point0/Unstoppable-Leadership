@@ -92,7 +92,7 @@ use JSONB (versioned/flexible content) instead of normalized columns.
 
 ## Content versioning
 
-Module *content* (the ten weeks' text, assessment questions, and
+Module _content_ (the ten weeks' text, assessment questions, and
 implementation steps) lives in code (`src/content/modules`), not the
 database — it's reviewed and deployed like any other code change. The
 `modules` table only stores a lightweight registry (slug, week, title,
@@ -108,7 +108,7 @@ bidirectional sync engine described in the original spec (local mutation
 queue, conflict detection, per-record "Saved / Saving / Offline / Changes
 pending / Synchronization failed / Conflict requires review" status).
 PostgreSQL is the only place mutations are durably written; the service
-worker only caches already-rendered pages for offline *reading*. Building
+worker only caches already-rendered pages for offline _reading_. Building
 a correct, tested offline-write-with-conflict-resolution layer is a
 substantial project in its own right — see "Recommended next phase" in
 the README.
@@ -118,7 +118,7 @@ the README.
 - CSP with a per-request nonce, generated in `src/proxy.ts` (Next.js 16's
   successor to `middleware.ts`) and threaded through to the root layout.
 - Secure headers: `X-Frame-Options: DENY`, `X-Content-Type-Options:
-  nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, a
+nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, a
   restrictive `Permissions-Policy`.
 - Every server action re-derives the authenticated user via
   `requireUser()`/`requireRole()` — the UI never assumes a hidden button

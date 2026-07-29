@@ -14,7 +14,7 @@ export function SignUpForm() {
   return (
     <form action={formAction} className="space-y-4" noValidate>
       {state && !state.ok && (
-        <p className="rounded-md bg-critical-bg px-3 py-2 text-sm text-critical" role="alert">
+        <p className="bg-critical-bg text-critical rounded-md px-3 py-2 text-sm" role="alert">
           {state.message}
         </p>
       )}
@@ -28,12 +28,27 @@ export function SignUpForm() {
       </div>
       <div className="space-y-2">
         <Label htmlFor="password">Password</Label>
-        <Input id="password" name="password" type="password" autoComplete="new-password" required minLength={12} />
-        <p className="text-xs text-slate">At least 12 characters, with letters and a number or symbol.</p>
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          autoComplete="new-password"
+          required
+          minLength={12}
+        />
+        <p className="text-slate text-xs">
+          At least 12 characters, with letters and a number or symbol.
+        </p>
       </div>
       <div className="space-y-2">
         <Label htmlFor="confirmPassword">Confirm password</Label>
-        <Input id="confirmPassword" name="confirmPassword" type="password" autoComplete="new-password" required />
+        <Input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          autoComplete="new-password"
+          required
+        />
       </div>
       <Button type="submit" className="w-full" disabled={pending}>
         {pending ? "Creating account…" : "Create account"}

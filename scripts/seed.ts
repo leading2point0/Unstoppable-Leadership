@@ -21,7 +21,11 @@ async function seedModules() {
       })
       .onConflictDoUpdate({
         target: modules.slug,
-        set: { weekNumber: moduleDefinition.week, title: moduleDefinition.title, contentVersion: moduleDefinition.contentVersion },
+        set: {
+          weekNumber: moduleDefinition.week,
+          title: moduleDefinition.title,
+          contentVersion: moduleDefinition.contentVersion,
+        },
       });
   }
   console.log(`Seeded ${PROGRAM_MODULES.length} module registry entries.`);
@@ -29,20 +33,26 @@ async function seedModules() {
 
 async function seedSourceBibliography() {
   const isbn = "9781722527549";
-  const [existing] = await db.select().from(sourceRecords).where(eq(sourceRecords.isbn, isbn)).limit(1);
+  const [existing] = await db
+    .select()
+    .from(sourceRecords)
+    .where(eq(sourceRecords.isbn, isbn))
+    .limit(1);
   if (existing) {
     console.log("Book bibliographic record already seeded.");
     return;
   }
 
   await db.insert(sourceRecords).values({
-    title: "Unstoppable: Motivation Secrets You Need to Develop Courage, Confidence and a Positive Mental Attitude",
+    title:
+      "Unstoppable: Motivation Secrets You Need to Develop Courage, Confidence and a Positive Mental Attitude",
     authorOrOrganization: "Brian Tracy",
     publisher: "G&D Media / Gildan Media",
     publicationDate: "2023-01-01",
     sourceType: "book",
     isbn,
-    edition: "First edition (verify against your specific print, ebook, or audiobook edition before citing page numbers)",
+    edition:
+      "First edition (verify against your specific print, ebook, or audiobook edition before citing page numbers)",
     notes:
       "Bibliographic details verified by the site owner. Length: 196 pages. This record exists for attribution purposes; " +
       "the application does not reproduce chapter text. Any direct quotation must be added and verified separately " +

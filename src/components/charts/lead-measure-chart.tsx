@@ -1,6 +1,14 @@
 "use client";
 
-import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis, CartesianGrid } from "recharts";
+import {
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+} from "recharts";
 
 export interface LeadMeasurePoint {
   date: string;
@@ -9,7 +17,7 @@ export interface LeadMeasurePoint {
 
 export function LeadMeasureChart({ data, unit }: { data: LeadMeasurePoint[]; unit?: string }) {
   if (data.length === 0) {
-    return <p className="text-sm text-slate">No entries yet. Log your first measurement below.</p>;
+    return <p className="text-slate text-sm">No entries yet. Log your first measurement below.</p>;
   }
 
   return (
@@ -21,10 +29,20 @@ export function LeadMeasureChart({ data, unit }: { data: LeadMeasurePoint[]; uni
             <XAxis dataKey="date" tick={{ fontSize: 12 }} stroke="var(--color-slate)" />
             <YAxis tick={{ fontSize: 12 }} stroke="var(--color-slate)" width={36} />
             <Tooltip
-              contentStyle={{ background: "var(--color-surface)", border: "1px solid var(--color-border)", fontSize: 12 }}
+              contentStyle={{
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-border)",
+                fontSize: 12,
+              }}
               formatter={(value) => [`${value}${unit ? ` ${unit}` : ""}`, "Actual"]}
             />
-            <Line type="monotone" dataKey="actual" stroke="var(--color-accent)" strokeWidth={2} dot={{ r: 3 }} />
+            <Line
+              type="monotone"
+              dataKey="actual"
+              stroke="var(--color-accent)"
+              strokeWidth={2}
+              dot={{ r: 3 }}
+            />
           </LineChart>
         </ResponsiveContainer>
       </div>

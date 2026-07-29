@@ -41,7 +41,9 @@ export interface ModuleWorkspaceProps {
     completedAt: Date | null;
   } | null;
   actions: ImplementationAction[];
-  assessment: { responses: { questionId: string; currentScore: number; desiredScore: number }[] } | null;
+  assessment: {
+    responses: { questionId: string; currentScore: number; desiredScore: number }[];
+  } | null;
   leadMeasureEntries: LeadMeasureEntry[];
 }
 
@@ -84,31 +86,67 @@ export function ModuleWorkspace({
         {SECTIONS.map((section) => (
           <TabsTrigger key={section} value={section} className="gap-1.5">
             {SECTION_LABELS[section]}
-            {doneMap[section] && <CheckCircle2 className={cn("h-3.5 w-3.5 text-success")} aria-hidden="true" />}
+            {doneMap[section] && (
+              <CheckCircle2 className={cn("text-success h-3.5 w-3.5")} aria-hidden="true" />
+            )}
           </TabsTrigger>
         ))}
       </TabsList>
 
       <TabsContent value="learn">
-        <LearnSection module={module} programId={programId} completed={doneMap.learn} onAdvance={() => advanceTo("assess")} />
+        <LearnSection
+          module={module}
+          programId={programId}
+          completed={doneMap.learn}
+          onAdvance={() => advanceTo("assess")}
+        />
       </TabsContent>
       <TabsContent value="assess">
-        <AssessSection module={module} programId={programId} existing={assessment} onAdvance={() => advanceTo("apply")} />
+        <AssessSection
+          module={module}
+          programId={programId}
+          existing={assessment}
+          onAdvance={() => advanceTo("apply")}
+        />
       </TabsContent>
       <TabsContent value="apply">
-        <ApplySection module={module} programId={programId} actions={actions} onAdvance={() => advanceTo("schedule")} />
+        <ApplySection
+          module={module}
+          programId={programId}
+          actions={actions}
+          onAdvance={() => advanceTo("schedule")}
+        />
       </TabsContent>
       <TabsContent value="schedule">
-        <ScheduleSection module={module} programId={programId} actions={actions} onAdvance={() => advanceTo("track")} />
+        <ScheduleSection
+          module={module}
+          programId={programId}
+          actions={actions}
+          onAdvance={() => advanceTo("track")}
+        />
       </TabsContent>
       <TabsContent value="track">
-        <TrackSection module={module} programId={programId} entries={leadMeasureEntries} onAdvance={() => advanceTo("reflect")} />
+        <TrackSection
+          module={module}
+          programId={programId}
+          entries={leadMeasureEntries}
+          onAdvance={() => advanceTo("reflect")}
+        />
       </TabsContent>
       <TabsContent value="reflect">
-        <ReflectSection module={module} programId={programId} alreadyReflected={doneMap.reflect} onAdvance={() => advanceTo("complete")} />
+        <ReflectSection
+          module={module}
+          programId={programId}
+          alreadyReflected={doneMap.reflect}
+          onAdvance={() => advanceTo("complete")}
+        />
       </TabsContent>
       <TabsContent value="complete">
-        <CompleteSection module={module} programId={programId} alreadyCompleted={doneMap.complete} />
+        <CompleteSection
+          module={module}
+          programId={programId}
+          alreadyCompleted={doneMap.complete}
+        />
       </TabsContent>
     </Tabs>
   );

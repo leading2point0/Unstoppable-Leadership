@@ -27,20 +27,13 @@ export const metadata: Metadata = {
     "An independent, ten-week study and implementation program that turns personal-development principles into scheduled actions, measurable behaviors, and lasting routines.",
   manifest: "/manifest.webmanifest",
   icons: {
-    icon: [
-      { url: "/icons/icon.svg", type: "image/svg+xml" },
-      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
-    ],
+    icon: "/icons/icon.svg",
     apple: "/icons/apple-touch-icon.png",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf8f4" },
-    { media: "(prefers-color-scheme: dark)", color: "#10141d" },
-  ],
+  themeColor: "#131a2b",
   width: "device-width",
   initialScale: 1,
 };
@@ -49,7 +42,11 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   const nonce = (await headers()).get("x-nonce") ?? undefined;
 
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${sourceSerif.variable} h-full`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${sourceSerif.variable} h-full`}
+    >
       <body className="flex min-h-full flex-col antialiased" data-nonce={nonce}>
         <Providers>
           <AppShell>{children}</AppShell>

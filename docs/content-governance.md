@@ -50,8 +50,8 @@ About page, footer, Sources page, and any exported document.
    Verification stamps `verificationDate` and `verifiedById` for
    auditability.
 6. **The admin warning.** Any quote with `verifiedByOwner: false` is shown
-   in the admin screen with: *"Citation incomplete. Verify this quotation
-   against a lawful copy before publication."* This is the
+   in the admin screen with: _"Citation incomplete. Verify this quotation
+   against a lawful copy before publication."_ This is the
    `UNVERIFIED_QUOTE_ADMIN_WARNING` constant in `src/content/disclaimers.ts`.
 7. **Every quote requires commentary and educational purpose.** The Zod
    schema (`src/schemas/source.ts`) rejects a quote submission that
@@ -69,7 +69,7 @@ About page, footer, Sources page, and any exported document.
   (`isPublic: false`) or mark a source `isOutdated` without deleting it.
 - The public Sources page (`/sources`) only ever queries
   `listPublicSources()`, which filters on `verified = true AND is_public =
-  true AND is_outdated = false`.
+true AND is_outdated = false`.
 
 ## Research citations (insights)
 

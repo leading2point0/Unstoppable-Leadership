@@ -6,7 +6,9 @@ export interface ModuleProgressLike {
 }
 
 /** Percentage (0-100) of the ten-week program completed, based on completed modules. */
-export function calculateProgramCompletionPercent(moduleProgressRows: ModuleProgressLike[]): number {
+export function calculateProgramCompletionPercent(
+  moduleProgressRows: ModuleProgressLike[],
+): number {
   const totalModules = PROGRAM_MODULES.length;
   if (totalModules === 0) return 0;
   const completed = moduleProgressRows.filter((row) => row.status === "completed").length;

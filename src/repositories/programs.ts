@@ -1,6 +1,7 @@
 import { and, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import { modules, programs } from "@/db/schema";
+import { nullifyEmptyStrings } from "@/lib/sanitize";
 import type { CreateProgramInput, UpdateProgramInput } from "@/schemas/program";
 import { PROGRAM_MODULES } from "@/content/modules";
 
@@ -25,18 +26,20 @@ export function createProgramRepository(ownerId: string): ProgramRepository {
     async createProgram(input) {
       const [program] = await db
         .insert(programs)
-        .values({
-          ownerId,
-          displayName: input.displayName,
-          primaryReason: input.primaryReason,
-          usageType: input.usageType,
-          startDate: input.startDate,
-          preferredReviewDay: input.preferredReviewDay,
-          reminderTime: input.reminderTime,
-          primaryLifeArea: input.primaryLifeArea,
-          currentGoal: input.currentGoal,
-          challengeLevel: input.challengeLevel,
-        })
+        .values(
+          nullifyEmptyStrings({
+            ownerId,
+            displayName: input.displayName,
+            primaryReason: input.primaryReason,
+            usageType: input.usageType,
+            startDate: input.startDate,
+            preferredReviewDay: input.preferredReviewDay,
+            reminderTime: input.reminderTime,
+            primaryLifeArea: input.primaryLifeArea,
+            currentGoal: input.currentGoal,
+            challengeLevel: input.challengeLevel,
+          }),
+        )
         .returning();
 
       await ensureModuleRegistrySeeded();
@@ -55,7 +58,7 @@ export function createProgramRepository(ownerId: string): ProgramRepository {
     async updateProgram(id, changes) {
       const [program] = await db
         .update(programs)
-        .set(changes)
+        .set(nullifyEmptyStrings(changes))
         .where(and(eq(programs.id, id), eq(programs.ownerId, ownerId)))
         .returning();
       if (!program) throw new Error("Program not found or not owned by this user.");
@@ -63,7 +66,11 @@ export function createProgramRepository(ownerId: string): ProgramRepository {
     },
 
     async listPrograms() {
-      return db.select().from(programs).where(eq(programs.ownerId, ownerId)).orderBy(desc(programs.createdAt));
+      return db
+        .select()
+        .from(programs)
+        .where(eq(programs.ownerId, ownerId))
+        .orderBy(desc(programs.createdAt));
     },
 
     async deleteProgram(id) {

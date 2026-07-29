@@ -20,7 +20,14 @@ export const actionStatusEnum = pgEnum("action_status", [
   "abandoned-intentionally",
 ]);
 
-export const recurrenceEnum = pgEnum("recurrence", ["none", "daily", "weekdays", "weekly", "biweekly", "monthly"]);
+export const recurrenceEnum = pgEnum("recurrence", [
+  "none",
+  "daily",
+  "weekdays",
+  "weekly",
+  "biweekly",
+  "monthly",
+]);
 
 export const sourceTypeEnum = pgEnum("source_type", [
   "book",
@@ -43,7 +50,12 @@ export const insightCategoryEnum = pgEnum("insight_category", [
   "quote",
 ]);
 
-export const programStatusEnum = pgEnum("program_status", ["active", "completed", "paused", "abandoned"]);
+export const programStatusEnum = pgEnum("program_status", [
+  "active",
+  "completed",
+  "paused",
+  "abandoned",
+]);
 
 export const moduleProgressStatusEnum = pgEnum("module_progress_status", [
   "locked",
@@ -54,4 +66,9 @@ export const moduleProgressStatusEnum = pgEnum("module_progress_status", [
 
 export const exportFormatEnum = pgEnum("export_format", ["markdown", "json", "html", "pdf"]);
 
-export const exportScopeEnum = pgEnum("export_scope", ["participant-data", "owner-full", "operating-system", "journal"]);
+export const exportScopeEnum = pgEnum("export_scope", [
+  "participant-data",
+  "owner-full",
+  "operating-system",
+  "journal",
+]);

@@ -20,8 +20,10 @@ export default async function JournalPage() {
     return (
       <div className="container-page py-16 text-center">
         <h1 className="font-serif text-3xl font-semibold">No program yet</h1>
-        <p className="mt-2 text-slate">Start your program to begin journaling.</p>
-        <Button asChild className="mt-6"><Link href="/program/new">Start My Program</Link></Button>
+        <p className="text-slate mt-2">Start your program to begin journaling.</p>
+        <Button asChild className="mt-6">
+          <Link href="/program/new">Start My Program</Link>
+        </Button>
       </div>
     );
   }
@@ -30,11 +32,11 @@ export default async function JournalPage() {
 
   return (
     <div className="container-page py-10">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Journal</p>
+      <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase">Journal</p>
       <h1 className="mt-2 font-serif text-3xl font-semibold">Reflection journal</h1>
-      <p className="mt-2 flex items-center gap-2 text-sm text-slate">
-        <Lock className="h-4 w-4" aria-hidden="true" /> Entries are private by default and never shown to a
-        facilitator or administrator unless you explicitly choose to share them.
+      <p className="text-slate mt-2 flex items-center gap-2 text-sm">
+        <Lock className="h-4 w-4" aria-hidden="true" /> Entries are private by default and never
+        shown to a facilitator or administrator unless you explicitly choose to share them.
       </p>
 
       <div className="mt-8 space-y-8">

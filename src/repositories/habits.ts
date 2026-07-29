@@ -18,17 +18,31 @@ export async function createHabit(userId: string, input: CreateHabitInput): Prom
   return habit;
 }
 
-export async function archiveHabit(habitId: string, programId: string, userId: string): Promise<void> {
+export async function archiveHabit(
+  habitId: string,
+  programId: string,
+  userId: string,
+): Promise<void> {
   await assertProgramOwnership(programId, userId);
-  await db.update(habits).set({ isActive: false }).where(and(eq(habits.id, habitId), eq(habits.programId, programId)));
+  await db
+    .update(habits)
+    .set({ isActive: false })
+    .where(and(eq(habits.id, habitId), eq(habits.programId, programId)));
 }
 
-export async function listHabitEntries(habitId: string, programId: string, userId: string): Promise<HabitEntry[]> {
+export async function listHabitEntries(
+  habitId: string,
+  programId: string,
+  userId: string,
+): Promise<HabitEntry[]> {
   await assertProgramOwnership(programId, userId);
   return db.select().from(habitEntries).where(eq(habitEntries.habitId, habitId));
 }
 
-export async function upsertHabitEntry(userId: string, input: LogHabitEntryInput): Promise<HabitEntry> {
+export async function upsertHabitEntry(
+  userId: string,
+  input: LogHabitEntryInput,
+): Promise<HabitEntry> {
   await assertProgramOwnership(input.programId, userId);
   const [entry] = await db
     .insert(habitEntries)
@@ -41,7 +55,11 @@ export async function upsertHabitEntry(userId: string, input: LogHabitEntryInput
     })
     .onConflictDoUpdate({
       target: [habitEntries.habitId, habitEntries.entryDate],
-      set: { completed: input.completed, usedMinimumVersion: input.usedMinimumVersion, notes: input.notes },
+      set: {
+        completed: input.completed,
+        usedMinimumVersion: input.usedMinimumVersion,
+        notes: input.notes,
+      },
     })
     .returning();
   return entry;

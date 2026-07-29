@@ -1,6 +1,11 @@
 import { z } from "zod";
 
-export const sharingLevelValues = ["private", "completion-only", "selected-response", "shared-with-facilitator"] as const;
+export const sharingLevelValues = [
+  "private",
+  "completion-only",
+  "selected-response",
+  "shared-with-facilitator",
+] as const;
 
 export const createJournalEntrySchema = z.object({
   programId: z.string().uuid(),

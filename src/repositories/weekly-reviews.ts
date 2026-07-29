@@ -17,12 +17,18 @@ import { calculateWeeklyScore } from "@/services/scorecard";
 export type WeeklyReview = typeof weeklyReviews.$inferSelect;
 export type Scorecard = typeof scorecards.$inferSelect;
 
-export async function listWeeklyReviews(programId: string, userId: string): Promise<WeeklyReview[]> {
+export async function listWeeklyReviews(
+  programId: string,
+  userId: string,
+): Promise<WeeklyReview[]> {
   await assertProgramOwnership(programId, userId);
   return db.select().from(weeklyReviews).where(eq(weeklyReviews.programId, programId));
 }
 
-export async function saveWeeklyReview(userId: string, input: WeeklyReviewInput): Promise<WeeklyReview> {
+export async function saveWeeklyReview(
+  userId: string,
+  input: WeeklyReviewInput,
+): Promise<WeeklyReview> {
   await assertProgramOwnership(input.programId, userId);
   const [review] = await db
     .insert(weeklyReviews)
@@ -71,7 +77,12 @@ export async function recomputeScorecard(
   const actions = await db
     .select()
     .from(implementationActions)
-    .where(and(eq(implementationActions.programId, programId), eq(implementationActions.moduleSlug, moduleSlug)));
+    .where(
+      and(
+        eq(implementationActions.programId, programId),
+        eq(implementationActions.moduleSlug, moduleSlug),
+      ),
+    );
 
   const [leadMeasure] = await db
     .select({ id: leadMeasures.id })

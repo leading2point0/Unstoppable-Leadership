@@ -24,7 +24,13 @@ const CLOSE_DELAY_MS = 150;
  * Accessible insight trigger. Opens on hover, keyboard focus, and click/tap
  * — never hover-only. Escape closes it and returns focus to the trigger.
  */
-export function InsightPopover({ insight, children }: { insight: InsightContent; children?: React.ReactNode }) {
+export function InsightPopover({
+  insight,
+  children,
+}: {
+  insight: InsightContent;
+  children?: React.ReactNode;
+}) {
   const [open, setOpen] = React.useState(false);
   const closeTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -50,13 +56,21 @@ export function InsightPopover({ insight, children }: { insight: InsightContent;
       <PopoverPrimitive.Trigger asChild>
         <button
           type="button"
-          className="inline-flex items-center align-middle text-accent focus-visible:outline-2 focus-visible:outline-accent rounded-full"
+          className="text-accent focus-visible:outline-accent inline-flex items-center rounded-full align-middle focus-visible:outline-2"
           aria-label={`More information: ${insight.title}`}
           onMouseEnter={openNow}
           onMouseLeave={closeSoon}
           onFocus={openNow}
           onBlur={closeSoon}
-          onClick={() => setOpen((prev) => !prev)}
+          onClick={(event) => {
+            // Radix's own Trigger click handler toggles open state, which
+            // would immediately close a popover that focus/hover already
+            // opened. Take over entirely: click always opens (never
+            // toggles closed) — closing happens via Escape, blur, or
+            // moving the pointer away.
+            event.preventDefault();
+            openNow();
+          }}
         >
           {children ?? <Info className="h-[0.9em] w-[0.9em]" aria-hidden="true" />}
         </button>
@@ -66,8 +80,9 @@ export function InsightPopover({ insight, children }: { insight: InsightContent;
           sideOffset={8}
           onMouseEnter={openNow}
           onMouseLeave={closeSoon}
+          onOpenAutoFocus={(event) => event.preventDefault()}
           className={cn(
-            "z-50 w-80 rounded-lg border border-border bg-surface p-4 text-sm shadow-lg outline-none",
+            "border-border bg-surface z-50 w-80 rounded-lg border p-4 text-sm shadow-lg outline-none",
             "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
           )}
         >
@@ -75,10 +90,10 @@ export function InsightPopover({ insight, children }: { insight: InsightContent;
             {INSIGHT_CATEGORY_LABELS[insight.category]}
           </Badge>
           <p className="font-medium">{insight.title}</p>
-          <p className="mt-1 text-slate">{insight.summary}</p>
+          <p className="text-slate mt-1">{insight.summary}</p>
 
           {insight.quoteText && (
-            <blockquote className="mt-2 border-l-2 border-accent pl-3 italic text-slate">
+            <blockquote className="border-accent text-slate mt-2 border-l-2 pl-3 italic">
               &ldquo;{insight.quoteText}&rdquo;
             </blockquote>
           )}
@@ -91,7 +106,7 @@ export function InsightPopover({ insight, children }: { insight: InsightContent;
           )}
 
           {(insight.sourceTitle || insight.sourceUrl) && (
-            <div className="mt-3 border-t border-border pt-2 text-xs text-slate-muted">
+            <div className="border-border text-slate-muted mt-3 border-t pt-2 text-xs">
               {insight.sourceAuthor && <span>{insight.sourceAuthor}. </span>}
               {insight.sourceTitle && <cite>{insight.sourceTitle}</cite>}
               {insight.sourcePage && <span>, p. {insight.sourcePage}</span>}
@@ -99,7 +114,12 @@ export function InsightPopover({ insight, children }: { insight: InsightContent;
               {insight.sourceUrl && (
                 <>
                   {" "}
-                  <a href={insight.sourceUrl} target="_blank" rel="noreferrer" className="text-accent hover:underline">
+                  <a
+                    href={insight.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-accent hover:underline"
+                  >
                     View source
                   </a>
                 </>
@@ -108,7 +128,7 @@ export function InsightPopover({ insight, children }: { insight: InsightContent;
           )}
 
           {!insight.verified && (
-            <p className="mt-2 text-xs text-caution">Reflective note — not a verified citation.</p>
+            <p className="text-caution mt-2 text-xs">Reflective note — not a verified citation.</p>
           )}
         </PopoverPrimitive.Content>
       </PopoverPrimitive.Portal>

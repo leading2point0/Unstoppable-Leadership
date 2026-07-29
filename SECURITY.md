@@ -56,7 +56,7 @@ attempts, data exfiltration, etc.) without prior written authorization.
   only — not present in the production runtime bundle)
 - `drizzle-kit`'s transitive `esbuild` (used only to load
   `drizzle.config.ts`, not to run an exposed dev server)
-- `postcss` and `sharp` bundled *inside* `next`'s own `node_modules`
+- `postcss` and `sharp` bundled _inside_ `next`'s own `node_modules`
   (Next.js's internal copies, not ones this project can independently
   upgrade — track for resolution in a future Next.js patch release)
 

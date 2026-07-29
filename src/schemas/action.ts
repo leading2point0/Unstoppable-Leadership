@@ -9,7 +9,14 @@ export const actionStatusValues = [
   "abandoned-intentionally",
 ] as const;
 
-export const recurrenceValues = ["none", "daily", "weekdays", "weekly", "biweekly", "monthly"] as const;
+export const recurrenceValues = [
+  "none",
+  "daily",
+  "weekdays",
+  "weekly",
+  "biweekly",
+  "monthly",
+] as const;
 
 export const createActionSchema = z.object({
   programId: z.string().uuid(),
@@ -21,8 +28,8 @@ export const createActionSchema = z.object({
   nextPhysicalAction: z.string().max(300).optional(),
   importance: z.enum(["urgent-important", "important", "low-value"]).default("important"),
   estimatedEffortMinutes: z.coerce.number().int().min(0).max(1000).optional(),
-  dueDate: z.string().optional(),
-  dueTime: z.string().optional(),
+  dueDate: z.string().max(20).optional(),
+  dueTime: z.string().max(20).optional(),
   recurrence: z.enum(recurrenceValues).default("none"),
   contextOrLocation: z.string().max(200).optional(),
   trigger: z.string().max(200).optional(),

@@ -1,7 +1,13 @@
 export interface OperatingSystemData {
   displayName?: string | null;
   identityStatement?: string | null;
-  primaryGoal?: { goal: string; deadline: string; baseline: string; target: string; leadMeasure: string } | null;
+  primaryGoal?: {
+    goal: string;
+    deadline: string;
+    baseline: string;
+    target: string;
+    leadMeasure: string;
+  } | null;
   bigThree: string[];
   dailyNonNegotiables: string[];
   weeklyReviewQuestions: string[];

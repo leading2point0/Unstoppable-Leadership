@@ -15,17 +15,30 @@ export function ResetPasswordForm({ token }: { token: string }) {
     <form action={formAction} className="space-y-4" noValidate>
       <input type="hidden" name="token" value={token} />
       {state && !state.ok && (
-        <p className="rounded-md bg-critical-bg px-3 py-2 text-sm text-critical" role="alert">
+        <p className="bg-critical-bg text-critical rounded-md px-3 py-2 text-sm" role="alert">
           {state.message}
         </p>
       )}
       <div className="space-y-2">
         <Label htmlFor="password">New password</Label>
-        <Input id="password" name="password" type="password" autoComplete="new-password" required minLength={12} />
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          autoComplete="new-password"
+          required
+          minLength={12}
+        />
       </div>
       <div className="space-y-2">
         <Label htmlFor="confirmPassword">Confirm new password</Label>
-        <Input id="confirmPassword" name="confirmPassword" type="password" autoComplete="new-password" required />
+        <Input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          autoComplete="new-password"
+          required
+        />
       </div>
       <Button type="submit" className="w-full" disabled={pending}>
         {pending ? "Updating…" : "Update password"}

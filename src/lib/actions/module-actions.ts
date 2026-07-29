@@ -4,11 +4,10 @@ import { revalidatePath } from "next/cache";
 import { requireUser } from "@/lib/auth-guard";
 import {
   completeModule,
-  getOrCreateModuleProgress,
   markModuleSectionComplete,
   saveAssessment,
 } from "@/repositories/module-progress";
-import { addActionEvidence, createAction, listActions, updateAction } from "@/repositories/actions";
+import { addActionEvidence, updateAction } from "@/repositories/actions";
 import type { ActionEvidenceInput } from "@/schemas/action";
 import { logLeadMeasureEntry } from "@/repositories/lead-measures";
 import { createJournalEntry } from "@/repositories/journal";
@@ -43,36 +42,11 @@ export async function submitAssessmentAction(
   return result.summary;
 }
 
-/** Ensures the five implementation-step actions exist for this module, created once from module content defaults. */
-export async function ensureModuleActionsAction(programId: string, moduleSlug: string) {
-  const user = await requireUser();
-  await getOrCreateModuleProgress(programId, user.id, moduleSlug);
-  const moduleDefinition = getModuleBySlug(moduleSlug);
-  if (!moduleDefinition) return;
-
-  const existing = await listActions(programId, user.id);
-  const existingByStep = new Set(existing.filter((a) => a.moduleSlug === moduleSlug).map((a) => a.stepIndex));
-
-  for (let i = 0; i < moduleDefinition.implementationSteps.length; i++) {
-    if (existingByStep.has(i)) continue;
-    const step = moduleDefinition.implementationSteps[i];
-    await createAction(user.id, {
-      programId,
-      moduleSlug,
-      stepIndex: i,
-      title: step.title,
-      description: step.instructions,
-      reason: step.purpose,
-      importance: "important",
-      estimatedEffortMinutes: step.defaultEstimatedEffortMinutes,
-      recurrence: "none",
-      isDifficultAction: false,
-    });
-  }
-  revalidateModule(programId, moduleSlug);
-}
-
-export async function updateModuleActionAction(actionId: string, programId: string, changes: UpdateActionInput) {
+export async function updateModuleActionAction(
+  actionId: string,
+  programId: string,
+  changes: UpdateActionInput,
+) {
   const user = await requireUser();
   const updated = await updateAction(actionId, programId, user.id, changes);
   if (updated.moduleSlug) {
@@ -82,7 +56,10 @@ export async function updateModuleActionAction(actionId: string, programId: stri
   return updated;
 }
 
-export async function addModuleActionEvidenceAction(input: ActionEvidenceInput, moduleSlug: string) {
+export async function addModuleActionEvidenceAction(
+  input: ActionEvidenceInput,
+  moduleSlug: string,
+) {
   const user = await requireUser();
   const evidence = await addActionEvidence(user.id, input);
   await markModuleSectionComplete(input.programId, user.id, moduleSlug, "apply");

@@ -30,5 +30,4 @@ export const PRIVACY_LOCAL_FIRST_NOTICE =
 export const UNVERIFIED_QUOTE_ADMIN_WARNING =
   "Citation incomplete. Verify this quotation against a lawful copy before publication.";
 
-export const RECOVERY_MESSAGE =
-  "One missed day is information. Two missed days require a plan.";
+export const RECOVERY_MESSAGE = "One missed day is information. Two missed days require a plan.";

@@ -78,7 +78,10 @@ export interface WeekTrendPoint {
 }
 
 /** Twelve-week completion trend, most recent week last. Weeks with no entries show 0%. */
-export function calculateTwelveWeekTrend(entries: HabitEntryLike[], asOf: Date = new Date()): WeekTrendPoint[] {
+export function calculateTwelveWeekTrend(
+  entries: HabitEntryLike[],
+  asOf: Date = new Date(),
+): WeekTrendPoint[] {
   const byDate = new Map(entries.map((e) => [e.entryDate, e.completed]));
   const weeks: WeekTrendPoint[] = [];
 

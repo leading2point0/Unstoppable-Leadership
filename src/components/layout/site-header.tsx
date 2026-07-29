@@ -19,10 +19,10 @@ const primaryNav = [
 
 export function SiteHeader({ user }: { user: AuthenticatedUser | null }) {
   return (
-    <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur">
+    <header className="border-border bg-background/95 sticky top-0 z-30 border-b backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 font-serif text-lg font-semibold">
-          <Target className="h-5 w-5 text-accent" aria-hidden="true" />
+          <Target className="text-accent h-5 w-5" aria-hidden="true" />
           <span>Unstoppable Action Lab</span>
         </Link>
 

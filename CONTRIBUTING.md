@@ -31,7 +31,7 @@ CI runs the same checks (`.github/workflows/ci.yml`) plus a security scan
   before reading or writing.
 - Validate all external input with Zod at the boundary (server action,
   route handler) — don't trust client-supplied data.
-- Keep module *content* (`src/content/modules`) separate from the
+- Keep module _content_ (`src/content/modules`) separate from the
   components that render it.
 - Comments explain the non-obvious "why," not the "what" — well-named
   code should make the "what" unnecessary.
@@ -53,4 +53,4 @@ owner can verify a quote) that are enforced in code, not just convention.
 
 ## Commit messages
 
-Focus on *why* a change was made, not a restatement of the diff.
+Focus on _why_ a change was made, not a restatement of the diff.

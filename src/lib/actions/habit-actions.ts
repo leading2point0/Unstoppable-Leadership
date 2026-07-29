@@ -3,7 +3,12 @@
 import { revalidatePath } from "next/cache";
 import { requireUser } from "@/lib/auth-guard";
 import { createHabit, upsertHabitEntry } from "@/repositories/habits";
-import { createHabitSchema, logHabitEntrySchema, type CreateHabitInput, type LogHabitEntryInput } from "@/schemas/habit";
+import {
+  createHabitSchema,
+  logHabitEntrySchema,
+  type CreateHabitInput,
+  type LogHabitEntryInput,
+} from "@/schemas/habit";
 
 export async function createHabitAction(input: CreateHabitInput) {
   const user = await requireUser();

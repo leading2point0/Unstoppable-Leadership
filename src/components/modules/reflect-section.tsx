@@ -34,7 +34,9 @@ export function ReflectSection({
     <div className="space-y-6">
       <div>
         <h2 className="font-serif text-2xl font-semibold">Reflect</h2>
-        <p className="mt-2 text-sm text-slate">Short answers are fine. Honesty matters more than length.</p>
+        <p className="text-slate mt-2 text-sm">
+          Short answers are fine. Honesty matters more than length.
+        </p>
       </div>
 
       <div className="space-y-5">

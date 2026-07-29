@@ -40,37 +40,37 @@ value stays in sync if it ever changes.
 
 Required:
 
-| Variable | Value |
-| --- | --- |
-| `DATABASE_URL` | Reference to the Postgres service's `DATABASE_URL` |
-| `AUTH_SECRET` | A long random secret — `openssl rand -base64 32` |
-| `AUTH_TRUST_HOST` | `true` |
-| `APP_URL` | The Railway-generated domain (step 9), or your custom domain |
-| `NODE_ENV` | `production` |
-| `ALLOW_PUBLIC_REGISTRATION` | `false` until you've decided otherwise |
-| `RATE_LIMIT_ENABLED` | `true` |
+| Variable                    | Value                                                        |
+| --------------------------- | ------------------------------------------------------------ |
+| `DATABASE_URL`              | Reference to the Postgres service's `DATABASE_URL`           |
+| `AUTH_SECRET`               | A long random secret — `openssl rand -base64 32`             |
+| `AUTH_TRUST_HOST`           | `true`                                                       |
+| `APP_URL`                   | The Railway-generated domain (step 9), or your custom domain |
+| `NODE_ENV`                  | `production`                                                 |
+| `ALLOW_PUBLIC_REGISTRATION` | `false` until you've decided otherwise                       |
+| `RATE_LIMIT_ENABLED`        | `true`                                                       |
 
 For the one-time owner bootstrap (remove after use — see step 12):
 
-| Variable | Value |
-| --- | --- |
-| `BOOTSTRAP_OWNER_EMAIL` | Your email |
+| Variable                   | Value                                                               |
+| -------------------------- | ------------------------------------------------------------------- |
+| `BOOTSTRAP_OWNER_EMAIL`    | Your email                                                          |
 | `BOOTSTRAP_OWNER_PASSWORD` | A strong, temporary password (12+ chars, letters + a number/symbol) |
-| `BOOTSTRAP_OWNER_NAME` | Your name |
+| `BOOTSTRAP_OWNER_NAME`     | Your name                                                           |
 
 Optional (email delivery for password resets — without these, the app
 disables the pretense of sending reset emails and tells the user to
 contact an administrator instead):
 
-| Variable | Value |
-| --- | --- |
-| `EMAIL_FROM` | e.g. `no-reply@yourdomain.com` |
-| `SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASSWORD` / `SMTP_SECURE` | Your SMTP provider's values |
+| Variable                                                                  | Value                          |
+| ------------------------------------------------------------------------- | ------------------------------ |
+| `EMAIL_FROM`                                                              | e.g. `no-reply@yourdomain.com` |
+| `SMTP_HOST` / `SMTP_PORT` / `SMTP_USER` / `SMTP_PASSWORD` / `SMTP_SECURE` | Your SMTP provider's values    |
 
 Optional (monitoring):
 
-| Variable | Value |
-| --- | --- |
+| Variable                                | Value                        |
+| --------------------------------------- | ---------------------------- |
 | `SENTRY_DSN` / `NEXT_PUBLIC_SENTRY_DSN` | Only if you've set up Sentry |
 
 Do **not** set a hard-coded `PORT` — Railway injects `PORT` itself, and

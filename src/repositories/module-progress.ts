@@ -6,7 +6,10 @@ import { summarizeAssessment, type AssessmentResponseLike } from "@/services/ass
 
 export type ModuleProgressRow = typeof moduleProgress.$inferSelect;
 
-export async function listModuleProgress(programId: string, userId: string): Promise<ModuleProgressRow[]> {
+export async function listModuleProgress(
+  programId: string,
+  userId: string,
+): Promise<ModuleProgressRow[]> {
   await assertProgramOwnership(programId, userId);
   return db.select().from(moduleProgress).where(eq(moduleProgress.programId, programId));
 }
@@ -65,7 +68,11 @@ export async function completeModule(
   await assertProgramOwnership(programId, userId);
   const [updated] = await db
     .update(moduleProgress)
-    .set({ status: "completed", completedAt: new Date(), contentVersionAtCompletion: contentVersion })
+    .set({
+      status: "completed",
+      completedAt: new Date(),
+      contentVersionAtCompletion: contentVersion,
+    })
     .where(and(eq(moduleProgress.programId, programId), eq(moduleProgress.moduleSlug, moduleSlug)))
     .returning();
   return updated;

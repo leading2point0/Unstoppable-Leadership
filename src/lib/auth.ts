@@ -33,11 +33,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
         const rateLimitResult = loginRateLimit(`${ip}:${email.toLowerCase()}`);
         if (!rateLimitResult.allowed) {
-          await logAuditEvent({ action: "auth.login.rate_limited", details: { email }, ipAddress: ip });
+          await logAuditEvent({
+            action: "auth.login.rate_limited",
+            details: { email },
+            ipAddress: ip,
+          });
           return null;
         }
 
-        const [user] = await db.select().from(users).where(eq(users.email, email.toLowerCase())).limit(1);
+        const [user] = await db
+          .select()
+          .from(users)
+          .where(eq(users.email, email.toLowerCase()))
+          .limit(1);
         if (!user || !user.passwordHash || !user.isActive) {
           return null;
         }
@@ -54,7 +62,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             .update(users)
             .set({
               failedLoginAttempts: attempts,
-              lockedUntil: attempts >= LOCKOUT_THRESHOLD ? new Date(Date.now() + LOCKOUT_DURATION_MS) : null,
+              lockedUntil:
+                attempts >= LOCKOUT_THRESHOLD ? new Date(Date.now() + LOCKOUT_DURATION_MS) : null,
             })
             .where(eq(users.id, user.id));
           await logAuditEvent({ actorId: user.id, action: "auth.login.failed", ipAddress: ip });

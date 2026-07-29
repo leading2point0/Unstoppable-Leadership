@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useId, useState, useTransition } from "react";
 import { format } from "date-fns";
 import { Card, CardContent } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
@@ -31,7 +31,9 @@ export function JournalEntryForm({ programId }: { programId: string }) {
 
   function handleSubmit() {
     const combinedBody = ruthless
-      ? RUTHLESS_REVIEW_PROMPTS.map((prompt) => `${prompt}\n${ruthlessAnswers[prompt] ?? ""}`).join("\n\n")
+      ? RUTHLESS_REVIEW_PROMPTS.map((prompt) => `${prompt}\n${ruthlessAnswers[prompt] ?? ""}`).join(
+          "\n\n",
+        )
       : body;
 
     startTransition(async () => {
@@ -57,23 +59,33 @@ export function JournalEntryForm({ programId }: { programId: string }) {
         <div className="flex items-center justify-between">
           <p className="text-sm font-medium">New entry — private by default</p>
           <div className="flex items-center gap-2">
-            <Label htmlFor="ruthless-toggle" className="text-sm font-normal">Ruthless Review mode</Label>
+            <Label htmlFor="ruthless-toggle" className="text-sm font-normal">
+              Ruthless Review mode
+            </Label>
             <Switch id="ruthless-toggle" checked={ruthless} onCheckedChange={setRuthless} />
           </div>
         </div>
 
         {ruthless ? (
           <div className="space-y-3">
-            {RUTHLESS_REVIEW_PROMPTS.map((prompt) => (
-              <div key={prompt} className="space-y-1">
-                <Label className="text-sm font-normal">{prompt}</Label>
-                <Textarea
-                  rows={2}
-                  value={ruthlessAnswers[prompt] ?? ""}
-                  onChange={(e) => setRuthlessAnswers((prev) => ({ ...prev, [prompt]: e.target.value }))}
-                />
-              </div>
-            ))}
+            {RUTHLESS_REVIEW_PROMPTS.map((prompt, index) => {
+              const fieldId = `ruthless-${index}`;
+              return (
+                <div key={prompt} className="space-y-1">
+                  <Label htmlFor={fieldId} className="text-sm font-normal">
+                    {prompt}
+                  </Label>
+                  <Textarea
+                    id={fieldId}
+                    rows={2}
+                    value={ruthlessAnswers[prompt] ?? ""}
+                    onChange={(e) =>
+                      setRuthlessAnswers((prev) => ({ ...prev, [prompt]: e.target.value }))
+                    }
+                  />
+                </div>
+              );
+            })}
           </div>
         ) : (
           <div className="grid gap-3 sm:grid-cols-2">
@@ -92,11 +104,22 @@ export function JournalEntryForm({ programId }: { programId: string }) {
   );
 }
 
-function Field({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
+function Field({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  const id = useId();
   return (
     <div className="space-y-1">
-      <Label className="text-sm font-normal">{label}</Label>
-      <Textarea rows={2} value={value} onChange={(e) => onChange(e.target.value)} />
+      <Label htmlFor={id} className="text-sm font-normal">
+        {label}
+      </Label>
+      <Textarea id={id} rows={2} value={value} onChange={(e) => onChange(e.target.value)} />
     </div>
   );
 }

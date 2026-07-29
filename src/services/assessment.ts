@@ -16,8 +16,12 @@ export function summarizeAssessment(responses: AssessmentResponseLike[]): Assess
     return { currentAverage: 0, desiredAverage: 0, largestGapQuestionId: null, largestGap: 0 };
   }
 
-  const currentAverage = round(responses.reduce((sum, r) => sum + r.currentScore, 0) / responses.length);
-  const desiredAverage = round(responses.reduce((sum, r) => sum + r.desiredScore, 0) / responses.length);
+  const currentAverage = round(
+    responses.reduce((sum, r) => sum + r.currentScore, 0) / responses.length,
+  );
+  const desiredAverage = round(
+    responses.reduce((sum, r) => sum + r.desiredScore, 0) / responses.length,
+  );
 
   let largestGapQuestionId: string | null = null;
   let largestGap = -Infinity;
@@ -29,7 +33,12 @@ export function summarizeAssessment(responses: AssessmentResponseLike[]): Assess
     }
   }
 
-  return { currentAverage, desiredAverage, largestGapQuestionId, largestGap: largestGap === -Infinity ? 0 : largestGap };
+  return {
+    currentAverage,
+    desiredAverage,
+    largestGapQuestionId,
+    largestGap: largestGap === -Infinity ? 0 : largestGap,
+  };
 }
 
 function round(value: number): number {

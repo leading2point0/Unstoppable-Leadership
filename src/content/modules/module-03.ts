@@ -23,11 +23,27 @@ export const module03: ModuleDefinition = {
     "Identify the action you have been avoiding because of a prediction about how it will go, and treat that prediction as a hypothesis to test rather than a fact.",
   assessmentQuestions: [
     { id: "q1", prompt: "I take the first useful action before I feel fully prepared." },
-    { id: "q2", prompt: "I test my limiting beliefs against real evidence instead of assuming they're true." },
-    { id: "q3", prompt: "I notice that fear about a specific action usually decreases once I begin." },
-    { id: "q4", prompt: "I can name at least one uncomfortable but necessary action I took recently." },
-    { id: "q5", prompt: "I have a plan for how I'll respond if a feared outcome actually happens." },
-    { id: "q6", prompt: "I record what actually happened after taking action, rather than only what I predicted." },
+    {
+      id: "q2",
+      prompt: "I test my limiting beliefs against real evidence instead of assuming they're true.",
+    },
+    {
+      id: "q3",
+      prompt: "I notice that fear about a specific action usually decreases once I begin.",
+    },
+    {
+      id: "q4",
+      prompt: "I can name at least one uncomfortable but necessary action I took recently.",
+    },
+    {
+      id: "q5",
+      prompt: "I have a plan for how I'll respond if a feared outcome actually happens.",
+    },
+    {
+      id: "q6",
+      prompt:
+        "I record what actually happened after taking action, rather than only what I predicted.",
+    },
   ],
   implementationSteps: [
     {
@@ -42,14 +58,16 @@ export const module03: ModuleDefinition = {
       id: "step-2",
       title: "Define the opposite observable behavior",
       purpose: "Turn an abstract belief into a concrete, testable action.",
-      instructions: "Write the specific action that would be impossible if the limiting belief were fully true.",
+      instructions:
+        "Write the specific action that would be impossible if the limiting belief were fully true.",
       defaultEstimatedEffortMinutes: 10,
     },
     {
       id: "step-3",
       title: "Complete one courage action",
       purpose: "Generate direct evidence rather than more analysis.",
-      instructions: "Take the smallest version of that action this week and note exactly what happened, factually.",
+      instructions:
+        "Take the smallest version of that action this week and note exactly what happened, factually.",
       defaultEstimatedEffortMinutes: 30,
     },
     {
@@ -57,7 +75,7 @@ export const module03: ModuleDefinition = {
       title: "Create an if-then response plan",
       purpose: "Reduce the cost of the feared outcome by preparing for it in advance.",
       instructions:
-        "Write one sentence: \"If [feared outcome happens], then I will [specific response].\" Keep it visible before you act.",
+        'Write one sentence: "If [feared outcome happens], then I will [specific response]." Keep it visible before you act.',
       defaultEstimatedEffortMinutes: 10,
     },
     {
@@ -72,7 +90,8 @@ export const module03: ModuleDefinition = {
   leadMeasure: {
     label: "Number of uncomfortable but necessary actions completed",
     unit: "actions",
-    description: "Count actions you took specifically because they were necessary despite discomfort.",
+    description:
+      "Count actions you took specifically because they were necessary despite discomfort.",
     defaultTarget: 3,
   },
   sourceNotes:
@@ -84,7 +103,8 @@ export const module03: ModuleDefinition = {
       title: "Fear is often specific to anticipation, not the event itself",
       summary:
         "A recurring observation in personal-development writing is that anticipatory anxiety about a specific action frequently exceeds the discomfort of the action once it is underway.",
-      application: "Notice how your fear level changes in the first two minutes after you begin the action.",
+      application:
+        "Notice how your fear level changes in the first two minutes after you begin the action.",
     },
     {
       id: "m3-insight-2",

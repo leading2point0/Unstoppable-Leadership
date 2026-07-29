@@ -26,7 +26,7 @@ export async function logAuditEvent(input: LogAuditEventInput): Promise<void> {
     });
   } catch (error) {
     // Audit logging must never break the primary request flow.
-     
+
     console.error("[audit] failed to record event", input.action, error);
   }
 }

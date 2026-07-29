@@ -6,9 +6,20 @@ export function ProgressRing({ percent, label }: { percent: number; label: strin
   const offset = circumference - (percent / 100) * circumference;
 
   return (
-    <div className="relative flex h-32 w-32 items-center justify-center" role="img" aria-label={label}>
+    <div
+      className="relative flex h-32 w-32 items-center justify-center"
+      role="img"
+      aria-label={label}
+    >
       <svg width={size} height={size} className="-rotate-90">
-        <circle cx={size / 2} cy={size / 2} r={radius} stroke="var(--color-surface-muted)" strokeWidth={stroke} fill="none" />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          stroke="var(--color-surface-muted)"
+          strokeWidth={stroke}
+          fill="none"
+        />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -24,7 +35,7 @@ export function ProgressRing({ percent, label }: { percent: number; label: strin
       </svg>
       <div className="absolute flex flex-col items-center">
         <span className="font-serif text-2xl font-semibold">{percent}%</span>
-        <span className="text-xs text-slate">complete</span>
+        <span className="text-slate text-xs">complete</span>
       </div>
     </div>
   );

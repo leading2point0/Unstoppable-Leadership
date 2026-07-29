@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { CheckCircle2 } from "lucide-react";
 import type { ModuleDefinition } from "@/content/modules";
@@ -19,7 +18,6 @@ export function CompleteSection({
   programId: string;
   alreadyCompleted: boolean;
 }) {
-  const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [checked, setChecked] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(COMPLETION_AFFIRMATIONS.map((a) => [a.id, alreadyCompleted])),
@@ -30,14 +28,17 @@ export function CompleteSection({
   function handleComplete() {
     startTransition(async () => {
       await completeModuleAction(programId, module.slug);
-      router.push(`/program/${programId}`);
-      router.refresh();
+      // A full navigation (not the client router) guarantees the program
+      // overview reflects this completion immediately — the client Router
+      // Cache can otherwise serve a page snapshot from just before the
+      // server action's revalidation lands, showing stale progress.
+      window.location.href = `/program/${programId}`;
     });
   }
 
   if (alreadyCompleted) {
     return (
-      <div className="flex items-center gap-3 rounded-lg border border-success bg-success-bg p-6 text-success">
+      <div className="border-success bg-success-bg text-success flex items-center gap-3 rounded-lg border p-6">
         <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
         <p>This module is complete. You can revisit any section any time.</p>
       </div>
@@ -48,8 +49,9 @@ export function CompleteSection({
     <div className="space-y-6">
       <div>
         <h2 className="font-serif text-2xl font-semibold">Complete this module</h2>
-        <p className="mt-2 text-sm text-slate">
-          Honest, incomplete progress with a documented lesson still counts. This isn&apos;t about a perfect week.
+        <p className="text-slate mt-2 text-sm">
+          Honest, incomplete progress with a documented lesson still counts. This isn&apos;t about a
+          perfect week.
         </p>
       </div>
 
@@ -59,7 +61,9 @@ export function CompleteSection({
             <Checkbox
               id={`affirm-${affirmation.id}`}
               checked={checked[affirmation.id]}
-              onCheckedChange={(value) => setChecked((prev) => ({ ...prev, [affirmation.id]: value === true }))}
+              onCheckedChange={(value) =>
+                setChecked((prev) => ({ ...prev, [affirmation.id]: value === true }))
+              }
             />
             <Label htmlFor={`affirm-${affirmation.id}`} className="font-normal">
               {affirmation.label}

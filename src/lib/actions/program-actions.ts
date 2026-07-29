@@ -3,7 +3,12 @@
 import { revalidatePath } from "next/cache";
 import { requireUser } from "@/lib/auth-guard";
 import { createProgramRepository } from "@/repositories/programs";
-import { createProgramSchema, updateProgramSchema, type CreateProgramInput, type UpdateProgramInput } from "@/schemas/program";
+import {
+  createProgramSchema,
+  updateProgramSchema,
+  type CreateProgramInput,
+  type UpdateProgramInput,
+} from "@/schemas/program";
 import { logAuditEvent } from "@/lib/audit";
 
 export interface ProgramActionResult {
@@ -21,12 +26,20 @@ export async function createProgramAction(input: CreateProgramInput): Promise<Pr
 
   const repo = createProgramRepository(user.id);
   const program = await repo.createProgram(parsed.data);
-  await logAuditEvent({ actorId: user.id, action: "program.created", targetType: "program", targetId: program.id });
+  await logAuditEvent({
+    actorId: user.id,
+    action: "program.created",
+    targetType: "program",
+    targetId: program.id,
+  });
   revalidatePath("/dashboard");
   return { ok: true, programId: program.id };
 }
 
-export async function updateProgramAction(programId: string, input: UpdateProgramInput): Promise<ProgramActionResult> {
+export async function updateProgramAction(
+  programId: string,
+  input: UpdateProgramInput,
+): Promise<ProgramActionResult> {
   const user = await requireUser();
   const parsed = updateProgramSchema.safeParse(input);
   if (!parsed.success) {

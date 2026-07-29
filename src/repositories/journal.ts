@@ -6,7 +6,10 @@ import type { CreateJournalEntryInput } from "@/schemas/journal";
 
 export type JournalEntry = typeof journalEntries.$inferSelect;
 
-export async function listJournalEntries(programId: string, userId: string): Promise<JournalEntry[]> {
+export async function listJournalEntries(
+  programId: string,
+  userId: string,
+): Promise<JournalEntry[]> {
   await assertProgramOwnership(programId, userId);
   return db
     .select()
@@ -15,13 +18,22 @@ export async function listJournalEntries(programId: string, userId: string): Pro
     .orderBy(desc(journalEntries.entryDate));
 }
 
-export async function createJournalEntry(userId: string, input: CreateJournalEntryInput): Promise<JournalEntry> {
+export async function createJournalEntry(
+  userId: string,
+  input: CreateJournalEntryInput,
+): Promise<JournalEntry> {
   await assertProgramOwnership(input.programId, userId);
   const [entry] = await db.insert(journalEntries).values(input).returning();
   return entry;
 }
 
-export async function deleteJournalEntry(entryId: string, programId: string, userId: string): Promise<void> {
+export async function deleteJournalEntry(
+  entryId: string,
+  programId: string,
+  userId: string,
+): Promise<void> {
   await assertProgramOwnership(programId, userId);
-  await db.delete(journalEntries).where(and(eq(journalEntries.id, entryId), eq(journalEntries.programId, programId)));
+  await db
+    .delete(journalEntries)
+    .where(and(eq(journalEntries.id, entryId), eq(journalEntries.programId, programId)));
 }

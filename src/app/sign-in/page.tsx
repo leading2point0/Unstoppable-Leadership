@@ -12,7 +12,7 @@ export default function SignInPage() {
       title="Sign in"
       description="Continue your program."
       footer={
-        <p className="text-center text-sm text-slate">
+        <p className="text-slate text-center text-sm">
           New here?{" "}
           <Link href="/sign-up" className="text-accent hover:underline">
             Create an account

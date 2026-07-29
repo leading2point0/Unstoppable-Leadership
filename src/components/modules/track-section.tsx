@@ -42,7 +42,7 @@ export function TrackSection({
     <div className="space-y-6">
       <div>
         <h2 className="font-serif text-2xl font-semibold">Weekly lead measure</h2>
-        <p className="mt-2 text-sm text-slate">{module.leadMeasure.description}</p>
+        <p className="text-slate mt-2 text-sm">{module.leadMeasure.description}</p>
       </div>
 
       <Card>
@@ -59,7 +59,9 @@ export function TrackSection({
 
           <div className="flex flex-wrap items-end gap-3">
             <div>
-              <Label htmlFor="lead-measure-value">Today&apos;s actual{module.leadMeasure.unit ? ` (${module.leadMeasure.unit})` : ""}</Label>
+              <Label htmlFor="lead-measure-value">
+                Today&apos;s actual{module.leadMeasure.unit ? ` (${module.leadMeasure.unit})` : ""}
+              </Label>
               <Input
                 id="lead-measure-value"
                 type="number"

@@ -13,7 +13,11 @@ import { MAX_WEEKLY_SCORE } from "@/services/scorecard";
 
 export const metadata: Metadata = { title: "Weekly review" };
 
-export default async function WeeklyReviewPage({ params }: { params: Promise<{ programId: string }> }) {
+export default async function WeeklyReviewPage({
+  params,
+}: {
+  params: Promise<{ programId: string }>;
+}) {
   const { programId } = await params;
   const user = await requireUser();
   const repo = createProgramRepository(user.id);
@@ -33,18 +37,29 @@ export default async function WeeklyReviewPage({ params }: { params: Promise<{ p
 
   const existingReview = reviews.find((r) => r.weekNumber === moduleDefinition.week) ?? null;
   const scorecard = scorecards.find((s) => s.weekNumber === moduleDefinition.week) ?? null;
-  const latestLeadMeasure = [...leadMeasureEntries].sort((a, b) => b.entryDate.localeCompare(a.entryDate))[0];
+  const latestLeadMeasure = [...leadMeasureEntries].sort((a, b) =>
+    b.entryDate.localeCompare(a.entryDate),
+  )[0];
 
   return (
     <div className="container-page py-10">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Week {moduleDefinition.week} of 10</p>
-      <h1 className="mt-2 font-serif text-3xl font-semibold">Weekly review — {moduleDefinition.title}</h1>
-      <p className="mt-2 max-w-2xl text-slate">
+      <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase">
+        Week {moduleDefinition.week} of 10
+      </p>
+      <h1 className="mt-2 font-serif text-3xl font-semibold">
+        Weekly review — {moduleDefinition.title}
+      </h1>
+      <p className="text-slate mt-2 max-w-2xl">
         Ten questions, honestly answered, are worth more than a perfect week.
       </p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[2fr_1fr]">
-        <WeeklyReviewForm programId={programId} weekNumber={moduleDefinition.week} moduleSlug={currentModuleSlug} existing={existingReview} />
+        <WeeklyReviewForm
+          programId={programId}
+          weekNumber={moduleDefinition.week}
+          moduleSlug={currentModuleSlug}
+          existing={existingReview}
+        />
 
         <Card className="h-fit">
           <CardHeader>
@@ -53,16 +68,26 @@ export default async function WeeklyReviewPage({ params }: { params: Promise<{ p
           <CardContent className="space-y-3 text-sm">
             <SummaryRow label="Week" value={`${moduleDefinition.week} of 10`} />
             <SummaryRow label="Module" value={moduleDefinition.title} />
-            <SummaryRow label="Score" value={scorecard ? `${scorecard.totalScore} / ${MAX_WEEKLY_SCORE}` : "Not yet scored"} />
+            <SummaryRow
+              label="Score"
+              value={scorecard ? `${scorecard.totalScore} / ${MAX_WEEKLY_SCORE}` : "Not yet scored"}
+            />
             <SummaryRow label="Key lesson" value={existingReview?.lesson || "—"} />
             <SummaryRow label="Biggest win" value={existingReview?.biggestWin || "—"} />
             <SummaryRow label="Main obstacle" value={existingReview?.mainObstacle || "—"} />
             <SummaryRow
               label="Lead measure"
-              value={latestLeadMeasure ? `${latestLeadMeasure.actual} (${latestLeadMeasure.entryDate})` : "Not recorded"}
+              value={
+                latestLeadMeasure
+                  ? `${latestLeadMeasure.actual} (${latestLeadMeasure.entryDate})`
+                  : "Not recorded"
+              }
             />
             <SummaryRow label="Actions completed" value={existingReview?.actionsCompleted || "—"} />
-            <SummaryRow label="Carry-forward commitment" value={existingReview?.nextWeekPriority || "—"} />
+            <SummaryRow
+              label="Carry-forward commitment"
+              value={existingReview?.nextWeekPriority || "—"}
+            />
           </CardContent>
         </Card>
       </div>
@@ -73,7 +98,7 @@ export default async function WeeklyReviewPage({ params }: { params: Promise<{ p
 function SummaryRow({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-xs font-semibold uppercase tracking-wide text-slate-muted">{label}</p>
+      <p className="text-slate-muted text-xs font-semibold tracking-wide uppercase">{label}</p>
       <p className="mt-0.5">{value}</p>
     </div>
   );

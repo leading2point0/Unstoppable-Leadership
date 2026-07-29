@@ -2,7 +2,9 @@ import nodemailer from "nodemailer";
 import { serverEnv } from "@/lib/env";
 
 export function isEmailConfigured(): boolean {
-  return Boolean(serverEnv.SMTP_HOST && serverEnv.SMTP_USER && serverEnv.SMTP_PASSWORD && serverEnv.EMAIL_FROM);
+  return Boolean(
+    serverEnv.SMTP_HOST && serverEnv.SMTP_USER && serverEnv.SMTP_PASSWORD && serverEnv.EMAIL_FROM,
+  );
 }
 
 let transporter: ReturnType<typeof nodemailer.createTransport> | null = null;
@@ -46,7 +48,6 @@ export async function sendMail(input: SendMailInput): Promise<SendMailResult> {
     await client.sendMail({ from: serverEnv.EMAIL_FROM, ...input });
     return { sent: true };
   } catch (error) {
-     
     console.error("[mailer] failed to send email", error);
     return { sent: false, reason: "Email delivery failed." };
   }

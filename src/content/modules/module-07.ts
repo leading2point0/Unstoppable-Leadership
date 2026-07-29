@@ -22,47 +22,66 @@ export const module07: ModuleDefinition = {
   personalApplication:
     "Identify one high-consequence activity you keep postponing in favor of urgent-but-lower-value tasks, and protect a specific block of time for it.",
   assessmentQuestions: [
-    { id: "q1", prompt: "I regularly protect time for work that matters long-term but isn't urgent today." },
+    {
+      id: "q1",
+      prompt: "I regularly protect time for work that matters long-term but isn't urgent today.",
+    },
     { id: "q2", prompt: "I evaluate new commitments by what they will cost me elsewhere." },
-    { id: "q3", prompt: "I can describe what my life looks like in five years if my current habits continue unchanged." },
-    { id: "q4", prompt: "I have made a deliberate short-term sacrifice recently for a long-term goal." },
+    {
+      id: "q3",
+      prompt:
+        "I can describe what my life looks like in five years if my current habits continue unchanged.",
+    },
+    {
+      id: "q4",
+      prompt: "I have made a deliberate short-term sacrifice recently for a long-term goal.",
+    },
     { id: "q5", prompt: "I use a clear filter to decide what commitments to accept or decline." },
-    { id: "q6", prompt: "I distinguish between activities that are merely urgent and those that are truly important." },
+    {
+      id: "q6",
+      prompt:
+        "I distinguish between activities that are merely urgent and those that are truly important.",
+    },
   ],
   implementationSteps: [
     {
       id: "step-1",
       title: "Write a five-year vision",
       purpose: "Give long-term thinking a concrete target to weigh decisions against.",
-      instructions: "Write three to five sentences describing your work and life five years from now if things go well.",
+      instructions:
+        "Write three to five sentences describing your work and life five years from now if things go well.",
       defaultEstimatedEffortMinutes: 25,
     },
     {
       id: "step-2",
       title: "Identify the likely result of unchanged behavior",
       purpose: "Make the cost of inertia visible.",
-      instructions: "Honestly project where your current habits lead in five years if nothing changes.",
+      instructions:
+        "Honestly project where your current habits lead in five years if nothing changes.",
       defaultEstimatedEffortMinutes: 15,
     },
     {
       id: "step-3",
       title: "Classify activities as high, necessary, or low value",
       purpose: "Create a simple filter for where your time actually goes.",
-      instructions: "List your recurring weekly activities and mark each high-value, necessary, or low-value.",
+      instructions:
+        "List your recurring weekly activities and mark each high-value, necessary, or low-value.",
       defaultEstimatedEffortMinutes: 20,
     },
     {
       id: "step-4",
       title: "Make one strategic sacrifice",
       purpose: "Convert long-term thinking into a real trade-off this week.",
-      instructions: "Choose one low-value activity to reduce or remove, and redirect that time to a high-value one.",
+      instructions:
+        "Choose one low-value activity to reduce or remove, and redirect that time to a high-value one.",
       defaultEstimatedEffortMinutes: 15,
     },
     {
       id: "step-5",
       title: "Create a personal decision filter",
       purpose: "Make future trade-offs faster and more consistent.",
-      instructions: "Write one or two questions you'll ask before accepting a new commitment going forward.",
+      instructions:
+        "Write one or two questions you'll ask before accepting a new commitment going forward.",
       defaultEstimatedEffortMinutes: 15,
     },
   ],
@@ -81,7 +100,8 @@ export const module07: ModuleDefinition = {
       title: "Unprotected time defaults to whoever asks loudest",
       summary:
         "Without a deliberate block on the calendar, high-value but non-urgent work tends to be displaced by whatever feels most urgent in the moment.",
-      application: "Block your highest-value weekly activity on the calendar before the week fills up around it.",
+      application:
+        "Block your highest-value weekly activity on the calendar before the week fills up around it.",
     },
     {
       id: "m7-insight-2",

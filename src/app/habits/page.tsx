@@ -19,8 +19,10 @@ export default async function HabitsPage() {
     return (
       <div className="container-page py-16 text-center">
         <h1 className="font-serif text-3xl font-semibold">No program yet</h1>
-        <p className="mt-2 text-slate">Start your program to begin tracking habits.</p>
-        <Button asChild className="mt-6"><Link href="/program/new">Start My Program</Link></Button>
+        <p className="text-slate mt-2">Start your program to begin tracking habits.</p>
+        <Button asChild className="mt-6">
+          <Link href="/program/new">Start My Program</Link>
+        </Button>
       </div>
     );
   }
@@ -28,14 +30,17 @@ export default async function HabitsPage() {
   const habits = await listHabits(program.id, user.id);
   const activeHabits = habits.filter((h) => h.isActive);
   const habitsWithEntries = await Promise.all(
-    activeHabits.map(async (habit) => ({ habit, entries: await listHabitEntries(habit.id, program.id, user.id) })),
+    activeHabits.map(async (habit) => ({
+      habit,
+      entries: await listHabitEntries(habit.id, program.id, user.id),
+    })),
   );
 
   return (
     <div className="container-page py-10">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Habits</p>
+      <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase">Habits</p>
       <h1 className="mt-2 font-serif text-3xl font-semibold">Twelve-week habit tracker</h1>
-      <p className="mt-2 max-w-2xl text-slate">
+      <p className="text-slate mt-2 max-w-2xl">
         One missed day is information. Two missed days require a plan — not shame.
       </p>
 
@@ -43,7 +48,9 @@ export default async function HabitsPage() {
         <CreateHabitForm programId={program.id} />
 
         {habitsWithEntries.length === 0 ? (
-          <p className="py-8 text-center text-sm text-slate">No habits yet. Add your first one above.</p>
+          <p className="text-slate py-8 text-center text-sm">
+            No habits yet. Add your first one above.
+          </p>
         ) : (
           <div className="grid gap-4 md:grid-cols-2">
             {habitsWithEntries.map(({ habit, entries }) => (

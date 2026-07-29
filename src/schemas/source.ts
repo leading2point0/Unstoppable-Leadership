@@ -1,6 +1,14 @@
 import { z } from "zod";
 
-export const sourceTypeValues = ["book", "journal", "government", "official-website", "article", "video", "other"] as const;
+export const sourceTypeValues = [
+  "book",
+  "journal",
+  "government",
+  "official-website",
+  "article",
+  "video",
+  "other",
+] as const;
 
 export const sourceRecordSchema = z.object({
   title: z.string().min(1, "Title is required.").max(300),
@@ -28,7 +36,13 @@ export const quoteRecordSchema = z.object({
   page: z.string().max(50).optional(),
   sourceUrl: z.string().url().optional().or(z.literal("")),
   sourceId: z.string().uuid().optional(),
-  commentary: z.string().min(1, "Add original commentary connecting the quote to an exercise or lesson.").max(2000),
-  educationalPurpose: z.string().min(1, "State the specific educational purpose for including this quote.").max(500),
+  commentary: z
+    .string()
+    .min(1, "Add original commentary connecting the quote to an exercise or lesson.")
+    .max(2000),
+  educationalPurpose: z
+    .string()
+    .min(1, "State the specific educational purpose for including this quote.")
+    .max(500),
 });
 export type QuoteRecordInput = z.infer<typeof quoteRecordSchema>;

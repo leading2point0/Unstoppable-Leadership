@@ -16,8 +16,11 @@ export function AuthCard({
   return (
     <div className="container-page flex min-h-[calc(100dvh-4rem)] items-center justify-center py-12">
       <div className="w-full max-w-md space-y-6">
-        <Link href="/" className="flex items-center justify-center gap-2 font-serif text-lg font-semibold">
-          <Target className="h-5 w-5 text-accent" aria-hidden="true" />
+        <Link
+          href="/"
+          className="flex items-center justify-center gap-2 font-serif text-lg font-semibold"
+        >
+          <Target className="text-accent h-5 w-5" aria-hidden="true" />
           Unstoppable Action Lab
         </Link>
         <Card>

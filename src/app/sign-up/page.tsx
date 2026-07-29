@@ -11,7 +11,7 @@ export default function SignUpPage() {
       title="Create your account"
       description="The first account created on a fresh deployment becomes the owner account."
       footer={
-        <p className="text-center text-sm text-slate">
+        <p className="text-slate text-center text-sm">
           Already have an account?{" "}
           <Link href="/sign-in" className="text-accent hover:underline">
             Sign in

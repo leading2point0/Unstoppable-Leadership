@@ -19,11 +19,18 @@ export interface ActionResult {
   message: string;
 }
 
-export async function signUpAction(_prev: ActionResult | undefined, formData: FormData): Promise<ActionResult> {
+export async function signUpAction(
+  _prev: ActionResult | undefined,
+  formData: FormData,
+): Promise<ActionResult> {
   if (!serverEnv.ALLOW_PUBLIC_REGISTRATION) {
     const existingOwner = await db.select().from(users).where(eq(users.role, "owner")).limit(1);
     if (existingOwner.length > 0) {
-      return { ok: false, message: "Public registration is currently disabled. Ask an administrator for an invitation." };
+      return {
+        ok: false,
+        message:
+          "Public registration is currently disabled. Ask an administrator for an invitation.",
+      };
     }
   }
 
@@ -38,7 +45,11 @@ export async function signUpAction(_prev: ActionResult | undefined, formData: Fo
   }
 
   const email = parsed.data.email.toLowerCase();
-  const [existing] = await db.select({ id: users.id }).from(users).where(eq(users.email, email)).limit(1);
+  const [existing] = await db
+    .select({ id: users.id })
+    .from(users)
+    .where(eq(users.email, email))
+    .limit(1);
   if (existing) {
     return { ok: false, message: "An account with that email already exists." };
   }
@@ -106,7 +117,10 @@ export async function requestPasswordResetAction(
   return { ok: true, message: genericMessage };
 }
 
-export async function resetPasswordAction(_prev: ActionResult | undefined, formData: FormData): Promise<ActionResult> {
+export async function resetPasswordAction(
+  _prev: ActionResult | undefined,
+  formData: FormData,
+): Promise<ActionResult> {
   const parsed = resetPasswordSchema.safeParse({
     token: formData.get("token"),
     password: formData.get("password"),
@@ -127,9 +141,18 @@ export async function resetPasswordAction(_prev: ActionResult | undefined, formD
   }
 
   const passwordHash = await hashPassword(parsed.data.password);
-  await db.update(users).set({ passwordHash, failedLoginAttempts: 0, lockedUntil: null }).where(eq(users.id, tokenRow.userId));
-  await db.update(passwordResetTokens).set({ usedAt: new Date() }).where(eq(passwordResetTokens.id, tokenRow.id));
-  await db.update(sessions).set({ revokedAt: new Date() }).where(eq(sessions.userId, tokenRow.userId));
+  await db
+    .update(users)
+    .set({ passwordHash, failedLoginAttempts: 0, lockedUntil: null })
+    .where(eq(users.id, tokenRow.userId));
+  await db
+    .update(passwordResetTokens)
+    .set({ usedAt: new Date() })
+    .where(eq(passwordResetTokens.id, tokenRow.id));
+  await db
+    .update(sessions)
+    .set({ revokedAt: new Date() })
+    .where(eq(sessions.userId, tokenRow.userId));
 
   await logAuditEvent({ actorId: tokenRow.userId, action: "auth.password_reset.completed" });
   redirect("/sign-in?reset=1");
@@ -146,7 +169,11 @@ export async function signOutAction(): Promise<void> {
 
 export async function deleteAccountAction(): Promise<ActionResult> {
   const user = await requireUser();
-  await logAuditEvent({ actorId: user.id, action: "account.deleted", details: { email: user.email } });
+  await logAuditEvent({
+    actorId: user.id,
+    action: "account.deleted",
+    details: { email: user.email },
+  });
   await db.delete(users).where(eq(users.id, user.id));
   await signOut({ redirectTo: "/" });
   return { ok: true, message: "Account deleted." };

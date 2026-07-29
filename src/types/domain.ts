@@ -1,14 +1,17 @@
 export type UserRole = "owner" | "admin" | "facilitator" | "participant";
 
-export type SharingLevel = "private" | "completion-only" | "selected-response" | "shared-with-facilitator";
+export type SharingLevel =
+  "private" | "completion-only" | "selected-response" | "shared-with-facilitator";
 
 export type ChallengeLevel = "foundation" | "serious" | "intensive";
 
-export type ActionStatus = "not-started" | "planned" | "in-progress" | "blocked" | "completed" | "abandoned-intentionally";
+export type ActionStatus =
+  "not-started" | "planned" | "in-progress" | "blocked" | "completed" | "abandoned-intentionally";
 
 export type Recurrence = "none" | "daily" | "weekdays" | "weekly" | "biweekly" | "monthly";
 
-export type SourceType = "book" | "journal" | "government" | "official-website" | "article" | "video" | "other";
+export type SourceType =
+  "book" | "journal" | "government" | "official-website" | "article" | "video" | "other";
 
 export type InsightCategory =
   | "book-concept"

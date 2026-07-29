@@ -7,7 +7,13 @@ import type { ImplementationAction } from "@/repositories/actions";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { updateModuleActionAction, markScheduleCompleteAction } from "@/lib/actions/module-actions";
 import { buildIcsFile, recurrenceToRRule } from "@/lib/ics";
 import type { Recurrence } from "@/types/domain";
@@ -70,8 +76,9 @@ export function ScheduleSection({
     <div className="space-y-6">
       <div>
         <h2 className="font-serif text-2xl font-semibold">Schedule your commitments</h2>
-        <p className="mt-2 text-sm text-slate">
-          A due date is what turns an intention into a commitment. Add a date, time, and context for each action.
+        <p className="text-slate mt-2 text-sm">
+          A due date is what turns an intention into a commitment. Add a date, time, and context for
+          each action.
         </p>
       </div>
 
@@ -87,7 +94,9 @@ export function ScheduleSection({
                     defaultValue={action.dueDate ?? ""}
                     onBlur={(e) =>
                       startTransition(async () => {
-                        await updateModuleActionAction(action.id, programId, { dueDate: e.target.value || undefined });
+                        await updateModuleActionAction(action.id, programId, {
+                          dueDate: e.target.value || undefined,
+                        });
                       })
                     }
                   />
@@ -98,7 +107,9 @@ export function ScheduleSection({
                     defaultValue={action.dueTime ?? ""}
                     onBlur={(e) =>
                       startTransition(async () => {
-                        await updateModuleActionAction(action.id, programId, { dueTime: e.target.value || undefined });
+                        await updateModuleActionAction(action.id, programId, {
+                          dueTime: e.target.value || undefined,
+                        });
                       })
                     }
                   />
@@ -108,14 +119,20 @@ export function ScheduleSection({
                     defaultValue={action.recurrence}
                     onValueChange={(v) =>
                       startTransition(async () => {
-                        await updateModuleActionAction(action.id, programId, { recurrence: v as Recurrence });
+                        await updateModuleActionAction(action.id, programId, {
+                          recurrence: v as Recurrence,
+                        });
                       })
                     }
                   >
-                    <SelectTrigger><SelectValue /></SelectTrigger>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
                     <SelectContent>
                       {RECURRENCE_OPTIONS.map((opt) => (
-                        <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                        <SelectItem key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
@@ -125,7 +142,9 @@ export function ScheduleSection({
                     defaultValue={action.contextOrLocation ?? ""}
                     onBlur={(e) =>
                       startTransition(async () => {
-                        await updateModuleActionAction(action.id, programId, { contextOrLocation: e.target.value || undefined });
+                        await updateModuleActionAction(action.id, programId, {
+                          contextOrLocation: e.target.value || undefined,
+                        });
                       })
                     }
                   />
@@ -138,7 +157,9 @@ export function ScheduleSection({
                     defaultValue={action.trigger ?? ""}
                     onBlur={(e) =>
                       startTransition(async () => {
-                        await updateModuleActionAction(action.id, programId, { trigger: e.target.value || undefined });
+                        await updateModuleActionAction(action.id, programId, {
+                          trigger: e.target.value || undefined,
+                        });
                       })
                     }
                   />
@@ -148,13 +169,21 @@ export function ScheduleSection({
                     defaultValue={action.reminderText ?? ""}
                     onBlur={(e) =>
                       startTransition(async () => {
-                        await updateModuleActionAction(action.id, programId, { reminderText: e.target.value || undefined });
+                        await updateModuleActionAction(action.id, programId, {
+                          reminderText: e.target.value || undefined,
+                        });
                       })
                     }
                   />
                 </Field>
               </div>
-              <Button type="button" variant="outline" size="sm" onClick={() => downloadIcs(action)} disabled={!action.dueDate}>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => downloadIcs(action)}
+                disabled={!action.dueDate}
+              >
                 <Download className="h-4 w-4" aria-hidden="true" /> Download calendar file
               </Button>
             </CardContent>
@@ -172,7 +201,7 @@ export function ScheduleSection({
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="space-y-1">
-      <p className="text-xs font-semibold uppercase tracking-wide text-slate-muted">{label}</p>
+      <p className="text-slate-muted text-xs font-semibold tracking-wide uppercase">{label}</p>
       {children}
     </div>
   );

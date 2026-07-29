@@ -4,7 +4,6 @@ import { serverEnv } from "@/lib/env";
 import * as schema from "./schema";
 
 declare global {
-   
   var __unstoppableSql: postgres.Sql | undefined;
 }
 

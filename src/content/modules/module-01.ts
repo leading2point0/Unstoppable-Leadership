@@ -14,9 +14,9 @@ export const module01: ModuleDefinition = {
     "Continuous, structured learning expands what you are capable of doing.",
   ],
   whyItMatters:
-    "Most people treat motivation as something that happens to them — a mood that shows up or doesn't. Treating it instead as a trainable capacity changes the question from \"how do I feel more motivated\" to \"what evidence of progress can I generate today.\" That shift is the foundation for every module that follows.",
+    'Most people treat motivation as something that happens to them — a mood that shows up or doesn\'t. Treating it instead as a trainable capacity changes the question from "how do I feel more motivated" to "what evidence of progress can I generate today." That shift is the foundation for every module that follows.',
   whereItGoesWrong:
-    "The most common mistake is waiting for a feeling of readiness before starting. A close second is picking a skill so broad (\"get better at leadership\") that no concrete curriculum or practice schedule is possible. Vague goals produce vague motivation.",
+    'The most common mistake is waiting for a feeling of readiness before starting. A close second is picking a skill so broad ("get better at leadership") that no concrete curriculum or practice schedule is possible. Vague goals produce vague motivation.',
   leadershipApplication:
     "Leaders who model visible learning — naming what they are studying and what they got wrong — give their teams permission to do the same. A team's appetite for growth rarely exceeds its leader's.",
   personalApplication:
@@ -25,9 +25,21 @@ export const module01: ModuleDefinition = {
     { id: "q1", prompt: "I treat motivation as something I can build, not something I wait for." },
     { id: "q2", prompt: "I can point to a specific skill I am actively developing right now." },
     { id: "q3", prompt: "I keep a record of what I have learned and applied recently." },
-    { id: "q4", prompt: "When I feel stuck, I look for the next small action rather than waiting to feel ready." },
-    { id: "q5", prompt: "I take responsibility for outcomes rather than attributing them mainly to circumstances." },
-    { id: "q6", prompt: "I apply at least one new idea from what I'm learning within a day of encountering it." },
+    {
+      id: "q4",
+      prompt:
+        "When I feel stuck, I look for the next small action rather than waiting to feel ready.",
+    },
+    {
+      id: "q5",
+      prompt:
+        "I take responsibility for outcomes rather than attributing them mainly to circumstances.",
+    },
+    {
+      id: "q6",
+      prompt:
+        "I apply at least one new idea from what I'm learning within a day of encountering it.",
+    },
   ],
   implementationSteps: [
     {
@@ -74,7 +86,8 @@ export const module01: ModuleDefinition = {
   leadMeasure: {
     label: "Hours spent learning and applying the selected skill",
     unit: "hours",
-    description: "Log time spent in deliberate study or applied practice of your chosen skill each day.",
+    description:
+      "Log time spent in deliberate study or applied practice of your chosen skill each day.",
     defaultTarget: 5,
   },
   sourceNotes:

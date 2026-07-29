@@ -53,7 +53,15 @@ export async function getDashboardData(userId: string): Promise<DashboardData> {
     };
   }
 
-  const [moduleProgressRows, actions, habits, journalEntries, scorecards, operatingSystem, evidence] = await Promise.all([
+  const [
+    moduleProgressRows,
+    actions,
+    habits,
+    journalEntries,
+    scorecards,
+    operatingSystem,
+    evidence,
+  ] = await Promise.all([
     listModuleProgress(program.id, userId),
     listActions(program.id, userId),
     listHabits(program.id, userId),
@@ -68,7 +76,11 @@ export async function getDashboardData(userId: string): Promise<DashboardData> {
   const currentModule = getModuleBySlug(currentModuleSlug);
 
   const todaysActions = actions.filter(
-    (a) => a.status !== "completed" && a.status !== "abandoned-intentionally" && a.dueDate && isToday(parseISO(a.dueDate)),
+    (a) =>
+      a.status !== "completed" &&
+      a.status !== "abandoned-intentionally" &&
+      a.dueDate &&
+      isToday(parseISO(a.dueDate)),
   );
   const overdueActions = actions.filter(
     (a) =>
@@ -102,7 +114,8 @@ export async function getDashboardData(userId: string): Promise<DashboardData> {
     journalEntries.map((entry) => ({ entryDate: entry.entryDate, completed: true })),
   );
 
-  const currentWeekScorecard = scorecards.find((sc) => sc.weekNumber === (currentModule?.week ?? 1)) ?? scorecards.at(-1);
+  const currentWeekScorecard =
+    scorecards.find((sc) => sc.weekNumber === (currentModule?.week ?? 1)) ?? scorecards.at(-1);
   const weeklyScoreTotal = scorecards.length > 0 ? (currentWeekScorecard?.totalScore ?? 0) : null;
 
   const recentEvidence = evidence

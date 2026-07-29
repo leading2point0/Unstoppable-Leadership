@@ -14,12 +14,23 @@ const OPEN_STATUSES = new Set(["not-started", "planned", "in-progress"]);
 export function filterActionsByView<T extends ActionLike>(actions: T[], view: ActionView): T[] {
   switch (view) {
     case "today":
-      return actions.filter((a) => OPEN_STATUSES.has(a.status) && a.dueDate && isToday(parseISO(a.dueDate)));
+      return actions.filter(
+        (a) => OPEN_STATUSES.has(a.status) && a.dueDate && isToday(parseISO(a.dueDate)),
+      );
     case "this-week":
-      return actions.filter((a) => OPEN_STATUSES.has(a.status) && a.dueDate && isThisWeek(parseISO(a.dueDate), { weekStartsOn: 1 }));
+      return actions.filter(
+        (a) =>
+          OPEN_STATUSES.has(a.status) &&
+          a.dueDate &&
+          isThisWeek(parseISO(a.dueDate), { weekStartsOn: 1 }),
+      );
     case "overdue":
       return actions.filter(
-        (a) => OPEN_STATUSES.has(a.status) && a.dueDate && isPast(parseISO(a.dueDate)) && !isToday(parseISO(a.dueDate)),
+        (a) =>
+          OPEN_STATUSES.has(a.status) &&
+          a.dueDate &&
+          isPast(parseISO(a.dueDate)) &&
+          !isToday(parseISO(a.dueDate)),
       );
     case "blocked":
       return actions.filter((a) => a.status === "blocked");

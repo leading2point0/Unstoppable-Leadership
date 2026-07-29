@@ -30,11 +30,26 @@ export async function getOrCreateLeadMeasure(
   return created;
 }
 
-export async function logLeadMeasureEntry(userId: string, input: LogLeadMeasureEntryInput): Promise<LeadMeasureEntry> {
-  const measure = await getOrCreateLeadMeasure(input.programId, userId, input.moduleSlug, input.label, input.unit, input.target);
+export async function logLeadMeasureEntry(
+  userId: string,
+  input: LogLeadMeasureEntryInput,
+): Promise<LeadMeasureEntry> {
+  const measure = await getOrCreateLeadMeasure(
+    input.programId,
+    userId,
+    input.moduleSlug,
+    input.label,
+    input.unit,
+    input.target,
+  );
   const [entry] = await db
     .insert(leadMeasureEntries)
-    .values({ leadMeasureId: measure.id, entryDate: input.entryDate, actual: input.actual.toString(), notes: input.notes })
+    .values({
+      leadMeasureId: measure.id,
+      entryDate: input.entryDate,
+      actual: input.actual.toString(),
+      notes: input.notes,
+    })
     .returning();
   return entry;
 }
@@ -51,5 +66,8 @@ export async function listLeadMeasureEntries(
     .where(and(eq(leadMeasures.programId, programId), eq(leadMeasures.moduleSlug, moduleSlug)))
     .limit(1);
   if (!measure) return [];
-  return db.select().from(leadMeasureEntries).where(eq(leadMeasureEntries.leadMeasureId, measure.id));
+  return db
+    .select()
+    .from(leadMeasureEntries)
+    .where(eq(leadMeasureEntries.leadMeasureId, measure.id));
 }

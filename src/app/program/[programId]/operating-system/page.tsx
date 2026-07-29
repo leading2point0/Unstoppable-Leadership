@@ -7,7 +7,11 @@ import { OperatingSystemForm } from "@/components/forms/operating-system-form";
 
 export const metadata: Metadata = { title: "My Unstoppable Operating System" };
 
-export default async function OperatingSystemPage({ params }: { params: Promise<{ programId: string }> }) {
+export default async function OperatingSystemPage({
+  params,
+}: {
+  params: Promise<{ programId: string }>;
+}) {
   const { programId } = await params;
   const user = await requireUser();
   const repo = createProgramRepository(user.id);
@@ -18,9 +22,11 @@ export default async function OperatingSystemPage({ params }: { params: Promise<
 
   return (
     <div className="container-page container-prose py-10 print:max-w-none">
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent print:hidden">Final document</p>
+      <p className="text-accent text-xs font-semibold tracking-[0.2em] uppercase print:hidden">
+        Final document
+      </p>
       <h1 className="mt-2 font-serif text-3xl font-semibold">My Unstoppable Operating System</h1>
-      <p className="mt-2 text-slate print:hidden">
+      <p className="text-slate mt-2 print:hidden">
         Edit freely — this document should keep evolving. Export it or print it to keep in a binder.
       </p>
 

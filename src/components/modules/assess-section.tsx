@@ -34,7 +34,13 @@ export function AssessSection({
   });
   const [summary, setSummary] = useState(() =>
     existing
-      ? summarizeAssessment(existing.responses.map((r) => ({ questionId: r.questionId, currentScore: r.currentScore, desiredScore: r.desiredScore })))
+      ? summarizeAssessment(
+          existing.responses.map((r) => ({
+            questionId: r.questionId,
+            currentScore: r.currentScore,
+            desiredScore: r.desiredScore,
+          })),
+        )
       : null,
   );
 
@@ -50,15 +56,17 @@ export function AssessSection({
     });
   }
 
-  const largestGapQuestion = module.assessmentQuestions.find((q) => q.id === summary?.largestGapQuestionId);
+  const largestGapQuestion = module.assessmentQuestions.find(
+    (q) => q.id === summary?.largestGapQuestionId,
+  );
 
   return (
     <div className="space-y-6">
       <div>
         <h2 className="font-serif text-2xl font-semibold">Self-assessment</h2>
-        <p className="mt-2 text-sm text-slate">
-          This is a reflective score to help you notice patterns — not a clinical or diagnostic instrument. Rate where
-          you are today, and where you&apos;d like to be.
+        <p className="text-slate mt-2 text-sm">
+          This is a reflective score to help you notice patterns — not a clinical or diagnostic
+          instrument. Rate where you are today, and where you&apos;d like to be.
         </p>
       </div>
 
@@ -70,12 +78,22 @@ export function AssessSection({
               <ScoreRow
                 label="Current"
                 value={scores[question.id].current}
-                onChange={(value) => setScores((prev) => ({ ...prev, [question.id]: { ...prev[question.id], current: value } }))}
+                onChange={(value) =>
+                  setScores((prev) => ({
+                    ...prev,
+                    [question.id]: { ...prev[question.id], current: value },
+                  }))
+                }
               />
               <ScoreRow
                 label="Desired"
                 value={scores[question.id].desired}
-                onChange={(value) => setScores((prev) => ({ ...prev, [question.id]: { ...prev[question.id], desired: value } }))}
+                onChange={(value) =>
+                  setScores((prev) => ({
+                    ...prev,
+                    [question.id]: { ...prev[question.id], desired: value },
+                  }))
+                }
               />
             </CardContent>
           </Card>
@@ -105,10 +123,18 @@ export function AssessSection({
   );
 }
 
-function ScoreRow({ label, value, onChange }: { label: string; value: number; onChange: (v: number) => void }) {
+function ScoreRow({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: number;
+  onChange: (v: number) => void;
+}) {
   return (
     <div>
-      <p className="text-xs font-medium uppercase tracking-wide text-slate-muted">{label}</p>
+      <p className="text-slate-muted text-xs font-medium tracking-wide uppercase">{label}</p>
       <div role="radiogroup" aria-label={label} className="mt-1 flex gap-2">
         {ASSESSMENT_SCALE.map((option) => (
           <button
@@ -118,8 +144,10 @@ function ScoreRow({ label, value, onChange }: { label: string; value: number; on
             aria-checked={value === option.value}
             title={option.label}
             onClick={() => onChange(option.value)}
-            className={`h-9 w-9 rounded-full border text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-accent ${
-              value === option.value ? "border-accent bg-accent text-accent-foreground" : "border-border-strong hover:bg-surface-muted"
+            className={`focus-visible:outline-accent h-9 w-9 rounded-full border text-sm font-medium transition-colors focus-visible:outline-2 ${
+              value === option.value
+                ? "border-accent bg-accent text-accent-foreground"
+                : "border-border-strong hover:bg-surface-muted"
             }`}
           >
             {option.value}
@@ -133,7 +161,7 @@ function ScoreRow({ label, value, onChange }: { label: string; value: number; on
 function Stat({ label, value, isText }: { label: string; value: string; isText?: boolean }) {
   return (
     <div>
-      <p className="text-xs text-slate-muted">{label}</p>
+      <p className="text-slate-muted text-xs">{label}</p>
       <p className={isText ? "mt-1 text-sm" : "mt-1 font-serif text-2xl font-semibold"}>{value}</p>
     </div>
   );

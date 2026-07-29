@@ -16,32 +16,51 @@ export const module08: ModuleDefinition = {
   whyItMatters:
     "Resilience is less about avoiding setbacks and more about how quickly you separate what actually happened from your interpretation of it, and how prepared you are with a next step. Preparation done calmly in advance is far more reliable than composure invented in the moment of crisis.",
   whereItGoesWrong:
-    "In the middle of a setback, people often treat their interpretation of events (\"this is a disaster,\" \"I always fail at this\") as equivalent to the facts, which amplifies the emotional impact and slows recovery.",
+    'In the middle of a setback, people often treat their interpretation of events ("this is a disaster," "I always fail at this") as equivalent to the facts, which amplifies the emotional impact and slows recovery.',
   leadershipApplication:
-    "Leaders who separate facts from narrative out loud during a crisis — \"here is what we know, here is what we don't\" — help a team stay oriented and reduce panic-driven decisions.",
+    'Leaders who separate facts from narrative out loud during a crisis — "here is what we know, here is what we don\'t" — help a team stay oriented and reduce panic-driven decisions.',
   personalApplication:
     "Think of a recent setback and separate exactly what happened (facts) from the story you told yourself about what it meant (interpretation).",
   assessmentQuestions: [
-    { id: "q1", prompt: "I stay relatively calm when a real problem occurs, rather than escalating internally." },
-    { id: "q2", prompt: "I can separate the verified facts of a setback from my interpretation of it." },
+    {
+      id: "q1",
+      prompt:
+        "I stay relatively calm when a real problem occurs, rather than escalating internally.",
+    },
+    {
+      id: "q2",
+      prompt: "I can separate the verified facts of a setback from my interpretation of it.",
+    },
     { id: "q3", prompt: "I have a general plan for how I respond when something goes wrong." },
-    { id: "q4", prompt: "I extract a specific, actionable lesson from failures rather than just feeling bad about them." },
-    { id: "q5", prompt: "I think through likely risks in advance rather than only reacting after they occur." },
-    { id: "q6", prompt: "I maintain some kind of reserve (time, money, energy) for when things go wrong." },
+    {
+      id: "q4",
+      prompt:
+        "I extract a specific, actionable lesson from failures rather than just feeling bad about them.",
+    },
+    {
+      id: "q5",
+      prompt: "I think through likely risks in advance rather than only reacting after they occur.",
+    },
+    {
+      id: "q6",
+      prompt: "I maintain some kind of reserve (time, money, energy) for when things go wrong.",
+    },
   ],
   implementationSteps: [
     {
       id: "step-1",
       title: "Conduct a pre-mortem",
       purpose: "Anticipate likely failure points before they happen.",
-      instructions: "For your current major goal, imagine it has failed in six months and list the three most likely reasons why.",
+      instructions:
+        "For your current major goal, imagine it has failed in six months and list the three most likely reasons why.",
       defaultEstimatedEffortMinutes: 25,
     },
     {
       id: "step-2",
       title: "Establish a crisis-response protocol",
       purpose: "Reduce decision load in the moment a real problem occurs.",
-      instructions: "Write three steps you will take, in order, the moment you recognize a significant setback.",
+      instructions:
+        "Write three steps you will take, in order, the moment you recognize a significant setback.",
       defaultEstimatedEffortMinutes: 20,
     },
     {
@@ -56,14 +75,16 @@ export const module08: ModuleDefinition = {
       id: "step-4",
       title: "Complete a failure review",
       purpose: "Convert a past setback into a usable lesson.",
-      instructions: "For a recent setback, write what happened, what you learned, and one behavior you'll change because of it.",
+      instructions:
+        "For a recent setback, write what happened, what you learned, and one behavior you'll change because of it.",
       defaultEstimatedEffortMinutes: 20,
     },
     {
       id: "step-5",
       title: "Build practical recovery reserves",
       purpose: "Create a buffer that makes setbacks less costly.",
-      instructions: "Identify one reserve (time, money, a backup plan, a support contact) you can strengthen this week.",
+      instructions:
+        "Identify one reserve (time, money, a backup plan, a support contact) you can strengthen this week.",
       defaultEstimatedEffortMinutes: 20,
     },
   ],

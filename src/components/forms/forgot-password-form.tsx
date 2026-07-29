@@ -13,7 +13,7 @@ export function ForgotPasswordForm() {
 
   if (state?.ok) {
     return (
-      <p className="rounded-md bg-success-bg px-3 py-2 text-sm text-success" role="status">
+      <p className="bg-success-bg text-success rounded-md px-3 py-2 text-sm" role="status">
         {state.message}
       </p>
     );
@@ -22,7 +22,7 @@ export function ForgotPasswordForm() {
   return (
     <form action={formAction} className="space-y-4" noValidate>
       {state && !state.ok && (
-        <p className="rounded-md bg-critical-bg px-3 py-2 text-sm text-critical" role="alert">
+        <p className="bg-critical-bg text-critical rounded-md px-3 py-2 text-sm" role="alert">
           {state.message}
         </p>
       )}

@@ -12,7 +12,11 @@ function toIcsDate(date: Date): string {
 }
 
 function escapeIcsText(text: string): string {
-  return text.replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+  return text
+    .replace(/\\/g, "\\\\")
+    .replace(/;/g, "\\;")
+    .replace(/,/g, "\\,")
+    .replace(/\n/g, "\\n");
 }
 
 /** Builds a minimal, valid single-event .ics file for a scheduled commitment. */

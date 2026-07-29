@@ -16,7 +16,15 @@ import {
 import { RECOVERY_MESSAGE } from "@/content/disclaimers";
 import { logHabitEntryAction } from "@/lib/actions/habit-actions";
 
-export function HabitCard({ programId, habit, entries }: { programId: string; habit: Habit; entries: HabitEntry[] }) {
+export function HabitCard({
+  programId,
+  habit,
+  entries,
+}: {
+  programId: string;
+  habit: Habit;
+  entries: HabitEntry[];
+}) {
   const [pending, startTransition] = useTransition();
   const [showRecovery, setShowRecovery] = useState(false);
 
@@ -32,7 +40,13 @@ export function HabitCard({ programId, habit, entries }: { programId: string; ha
 
   function logToday(completed: boolean) {
     startTransition(async () => {
-      await logHabitEntryAction({ habitId: habit.id, programId, entryDate: today, completed, usedMinimumVersion: false });
+      await logHabitEntryAction({
+        habitId: habit.id,
+        programId,
+        entryDate: today,
+        completed,
+        usedMinimumVersion: false,
+      });
       if (!completed) setShowRecovery(true);
     });
   }
@@ -45,10 +59,20 @@ export function HabitCard({ programId, habit, entries }: { programId: string; ha
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex flex-wrap gap-2">
-          <Button size="sm" variant={todayEntry?.completed ? "default" : "outline"} onClick={() => logToday(true)} disabled={pending}>
+          <Button
+            size="sm"
+            variant={todayEntry?.completed ? "default" : "outline"}
+            onClick={() => logToday(true)}
+            disabled={pending}
+          >
             <Check className="h-4 w-4" aria-hidden="true" /> Done today
           </Button>
-          <Button size="sm" variant={todayEntry && !todayEntry.completed ? "destructive" : "outline"} onClick={() => logToday(false)} disabled={pending}>
+          <Button
+            size="sm"
+            variant={todayEntry && !todayEntry.completed ? "destructive" : "outline"}
+            onClick={() => logToday(false)}
+            disabled={pending}
+          >
             <X className="h-4 w-4" aria-hidden="true" /> Missed today
           </Button>
         </div>
@@ -61,13 +85,26 @@ export function HabitCard({ programId, habit, entries }: { programId: string; ha
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-muted">12-week trend</p>
-          <div className="mt-2 flex items-end gap-1" role="img" aria-label={`Twelve week completion trend: ${trend.map((w) => `${w.percent}%`).join(", ")}`}>
+          <p className="text-slate-muted text-xs font-semibold tracking-wide uppercase">
+            12-week trend
+          </p>
+          <div
+            className="mt-2 flex items-end gap-1"
+            role="img"
+            aria-label={`Twelve week completion trend: ${trend.map((w) => `${w.percent}%`).join(", ")}`}
+          >
             {trend.map((week) => (
-              <div key={week.weekStart} className="flex-1 rounded-t bg-surface-muted" style={{ height: "40px" }}>
+              <div
+                key={week.weekStart}
+                className="bg-surface-muted flex-1 rounded-t"
+                style={{ height: "40px" }}
+              >
                 <div
-                  className="w-full rounded-t bg-accent transition-[height]"
-                  style={{ height: `${Math.max(4, week.percent * 0.4)}px`, marginTop: `${40 - Math.max(4, week.percent * 0.4)}px` }}
+                  className="bg-accent w-full rounded-t transition-[height]"
+                  style={{
+                    height: `${Math.max(4, week.percent * 0.4)}px`,
+                    marginTop: `${40 - Math.max(4, week.percent * 0.4)}px`,
+                  }}
                 />
               </div>
             ))}
@@ -75,13 +112,18 @@ export function HabitCard({ programId, habit, entries }: { programId: string; ha
         </div>
 
         {showRecovery && (
-          <div className="rounded-md bg-caution-bg p-3 text-sm text-caution">
+          <div className="bg-caution-bg text-caution rounded-md p-3 text-sm">
             <p className="font-medium">{RECOVERY_MESSAGE}</p>
             <ul className="mt-2 list-disc space-y-1 pl-4">
               <li>What interrupted the routine?</li>
               <li>Was the habit too large?</li>
               <li>Was the trigger unreliable?</li>
-              <li>What is the minimum version? {habit.minimumVersion && <span className="font-medium">{habit.minimumVersion}</span>}</li>
+              <li>
+                What is the minimum version?{" "}
+                {habit.minimumVersion && (
+                  <span className="font-medium">{habit.minimumVersion}</span>
+                )}
+              </li>
               <li>What will change tomorrow?</li>
             </ul>
           </div>
@@ -94,7 +136,7 @@ export function HabitCard({ programId, habit, entries }: { programId: string; ha
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-xs text-slate-muted">{label}</p>
+      <p className="text-slate-muted text-xs">{label}</p>
       <p className="font-serif text-lg font-semibold">{value}</p>
     </div>
   );

@@ -8,8 +8,17 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { addModuleActionEvidenceAction, updateModuleActionAction } from "@/lib/actions/module-actions";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  addModuleActionEvidenceAction,
+  updateModuleActionAction,
+} from "@/lib/actions/module-actions";
 import type { ActionStatus } from "@/types/domain";
 
 const STATUS_OPTIONS: { value: ActionStatus; label: string }[] = [
@@ -42,14 +51,24 @@ export function ApplySection({
     <div className="space-y-6">
       <div>
         <h2 className="font-serif text-2xl font-semibold">Five implementation steps</h2>
-        <p className="mt-2 text-sm text-slate">Expand each step to plan it, update its status, and record evidence.</p>
+        <p className="text-slate mt-2 text-sm">
+          Expand each step to plan it, update its status, and record evidence.
+        </p>
       </div>
 
       <div className="space-y-4">
         {module.implementationSteps.map((step, index) => {
           const action = actionsByStep.get(index);
           if (!action) return null;
-          return <ActionCard key={step.id} programId={programId} moduleSlug={module.slug} step={step} action={action} />;
+          return (
+            <ActionCard
+              key={step.id}
+              programId={programId}
+              moduleSlug={module.slug}
+              step={step}
+              action={action}
+            />
+          );
         })}
       </div>
 
@@ -111,37 +130,52 @@ function ActionCard({
   }
 
   return (
-    <details className="group rounded-lg border border-border bg-surface" open={action.status !== "not-started"}>
+    <details
+      className="group border-border bg-surface rounded-lg border"
+      open={action.status !== "not-started"}
+    >
       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-4">
         <span className="font-medium">{step.title}</span>
         <StatusBadge status={action.status as ActionStatus} />
       </summary>
-      <div className="space-y-4 border-t border-border p-4">
+      <div className="border-border space-y-4 border-t p-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-muted">Purpose</p>
-          <p className="mt-1 text-sm text-slate">{step.purpose}</p>
+          <p className="text-slate-muted text-xs font-semibold tracking-wide uppercase">Purpose</p>
+          <p className="text-slate mt-1 text-sm">{step.purpose}</p>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-muted">Instructions</p>
-          <p className="mt-1 text-sm text-slate">{step.instructions}</p>
+          <p className="text-slate-muted text-xs font-semibold tracking-wide uppercase">
+            Instructions
+          </p>
+          <p className="text-slate mt-1 text-sm">{step.instructions}</p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <label className="text-xs font-semibold uppercase tracking-wide text-slate-muted" htmlFor={`status-${action.id}`}>
+            <label
+              className="text-slate-muted text-xs font-semibold tracking-wide uppercase"
+              htmlFor={`status-${action.id}`}
+            >
               Status
             </label>
             <Select value={action.status} onValueChange={(v) => setStatus(v as ActionStatus)}>
-              <SelectTrigger id={`status-${action.id}`} className="mt-1"><SelectValue /></SelectTrigger>
+              <SelectTrigger id={`status-${action.id}`} className="mt-1">
+                <SelectValue />
+              </SelectTrigger>
               <SelectContent>
                 {STATUS_OPTIONS.map((opt) => (
-                  <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                  <SelectItem key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
           <div>
-            <label className="text-xs font-semibold uppercase tracking-wide text-slate-muted" htmlFor={`effort-${action.id}`}>
+            <label
+              className="text-slate-muted text-xs font-semibold tracking-wide uppercase"
+              htmlFor={`effort-${action.id}`}
+            >
               Estimated effort (minutes)
             </label>
             <Input
@@ -153,7 +187,9 @@ function ActionCard({
                 const value = Number(e.target.value);
                 if (!Number.isNaN(value)) {
                   startTransition(async () => {
-                    await updateModuleActionAction(action.id, programId, { estimatedEffortMinutes: value });
+                    await updateModuleActionAction(action.id, programId, {
+                      estimatedEffortMinutes: value,
+                    });
                   });
                 }
               }}
@@ -162,17 +198,31 @@ function ActionCard({
         </div>
 
         <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="outline" size="sm" onClick={() => scaleEffort(0.6, "Made smaller")} disabled={pending}>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => scaleEffort(0.6, "Made smaller")}
+            disabled={pending}
+          >
             Make this smaller
           </Button>
-          <Button type="button" variant="outline" size="sm" onClick={() => scaleEffort(1.5, "Made more demanding")} disabled={pending}>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => scaleEffort(1.5, "Made more demanding")}
+            disabled={pending}
+          >
             Make this more demanding
           </Button>
         </div>
 
         <div>
           {action.blocker && (
-            <p className="rounded-md bg-caution-bg px-3 py-2 text-sm text-caution">Blocker: {action.blocker}</p>
+            <p className="bg-caution-bg text-caution rounded-md px-3 py-2 text-sm">
+              Blocker: {action.blocker}
+            </p>
           )}
         </div>
 
@@ -183,7 +233,10 @@ function ActionCard({
             </Button>
           ) : (
             <div className="space-y-2">
-              <label className="text-xs font-semibold uppercase tracking-wide text-slate-muted" htmlFor={`evidence-${action.id}`}>
+              <label
+                className="text-slate-muted text-xs font-semibold tracking-wide uppercase"
+                htmlFor={`evidence-${action.id}`}
+              >
                 What did you actually do?
               </label>
               <Textarea
@@ -196,7 +249,12 @@ function ActionCard({
                 <Button type="button" size="sm" onClick={submitEvidence} disabled={pending}>
                   Save evidence
                 </Button>
-                <Button type="button" variant="ghost" size="sm" onClick={() => setShowEvidence(false)}>
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowEvidence(false)}
+                >
                   Cancel
                 </Button>
               </div>
@@ -209,7 +267,10 @@ function ActionCard({
 }
 
 function StatusBadge({ status }: { status: ActionStatus }) {
-  const map: Record<ActionStatus, { label: string; variant: "neutral" | "accent" | "success" | "critical" | "caution" }> = {
+  const map: Record<
+    ActionStatus,
+    { label: string; variant: "neutral" | "accent" | "success" | "critical" | "caution" }
+  > = {
     "not-started": { label: "Not started", variant: "neutral" },
     planned: { label: "Planned", variant: "accent" },
     "in-progress": { label: "In progress", variant: "accent" },

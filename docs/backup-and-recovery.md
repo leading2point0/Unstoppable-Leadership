@@ -16,7 +16,7 @@ depending on your plan. In the Railway dashboard:
 1. Open the Postgres service.
 2. Go to the **Backups** tab.
 3. Confirm a backup schedule is enabled and note the retention window.
-4. Periodically use **Restore** (to a *new* service, not in place) to
+4. Periodically use **Restore** (to a _new_ service, not in place) to
    confirm backups are actually restorable — an untested backup is not a
    backup.
 
@@ -93,7 +93,7 @@ tolerate, and record the actual chosen values in your own runbook:
 
 - Anything a user only entered into the offline-cached view of a page
   before regaining connectivity and saving — the service worker caches
-  *reads*, not unsynced writes (see "Synchronization / offline" in
+  _reads_, not unsynced writes (see "Synchronization / offline" in
   `docs/architecture.md`).
 - Audit log entries older than your chosen Postgres backup retention
   window.
