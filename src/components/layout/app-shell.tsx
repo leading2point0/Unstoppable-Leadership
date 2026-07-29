@@ -2,6 +2,7 @@ import { getAuthenticatedUser } from "@/lib/auth-guard";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { MobileNav } from "@/components/layout/mobile-nav";
+import { OfflineIndicator } from "@/components/layout/offline-indicator";
 
 export async function AppShell({ children }: { children: React.ReactNode }) {
   const user = await getAuthenticatedUser();
@@ -16,6 +17,7 @@ export async function AppShell({ children }: { children: React.ReactNode }) {
       </a>
       <div className="print:hidden">
         <SiteHeader user={user} />
+        <OfflineIndicator />
       </div>
       <main id="main-content" className="flex-1 pb-16 md:pb-0">
         {children}

@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import "./globals.css";
 import { Providers } from "@/components/layout/providers";
 import { AppShell } from "@/components/layout/app-shell";
+import { RegisterServiceWorker } from "@/components/layout/register-service-worker";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,8 +27,12 @@ export const metadata: Metadata = {
     "An independent, ten-week study and implementation program that turns personal-development principles into scheduled actions, measurable behaviors, and lasting routines.",
   manifest: "/manifest.webmanifest",
   icons: {
-    icon: "/icons/icon.svg",
-    apple: "/icons/icon-192.png",
+    icon: [
+      { url: "/icons/icon.svg", type: "image/svg+xml" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/icons/apple-touch-icon.png",
   },
 };
 
@@ -49,6 +54,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <Providers>
           <AppShell>{children}</AppShell>
         </Providers>
+        <RegisterServiceWorker />
       </body>
     </html>
   );
