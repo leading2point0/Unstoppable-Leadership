@@ -1,0 +1,16 @@
+# Railway config-as-code. The database migration pre-deploy command is set
+# in the Railway dashboard (Service > Settings > Deploy > Pre-Deploy Command:
+# `npm run db:migrate`) rather than here, since that field's exact key has
+# changed across Railway config-schema versions — see
+# docs/deployment-railway.md for the verified, current dashboard steps.
+
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "node server.js"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 120
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5
