@@ -4,7 +4,7 @@ import { serverEnv } from "@/lib/env";
 import * as schema from "./schema";
 
 declare global {
-  // eslint-disable-next-line no-var
+   
   var __unstoppableSql: postgres.Sql | undefined;
 }
 

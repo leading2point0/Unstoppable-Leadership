@@ -64,7 +64,7 @@ function loadServerEnv(): ServerEnv {
     if (process.env.NODE_ENV === "production") {
       throw new Error(message);
     }
-    // eslint-disable-next-line no-console
+     
     console.warn(`[env] ${message}`);
     return serverEnvSchema.parse({
       ...process.env,
