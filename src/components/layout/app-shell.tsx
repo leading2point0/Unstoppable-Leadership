@@ -14,12 +14,20 @@ export async function AppShell({ children }: { children: React.ReactNode }) {
       >
         Skip to main content
       </a>
-      <SiteHeader user={user} />
+      <div className="print:hidden">
+        <SiteHeader user={user} />
+      </div>
       <main id="main-content" className="flex-1 pb-16 md:pb-0">
         {children}
       </main>
-      <SiteFooter />
-      {user && <MobileNav />}
+      <div className="print:hidden">
+        <SiteFooter />
+      </div>
+      {user && (
+        <div className="print:hidden">
+          <MobileNav />
+        </div>
+      )}
     </div>
   );
 }
