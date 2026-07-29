@@ -21,3 +21,33 @@ export function determineCurrentModuleSlug(moduleProgressRows: ModuleProgressLik
   const next = PROGRAM_MODULES.find((module) => !completedSlugs.has(module.slug));
   return (next ?? PROGRAM_MODULES[PROGRAM_MODULES.length - 1]).slug;
 }
+
+export type EffectiveModuleStatus = "locked" | "available" | "in-progress" | "completed";
+
+/**
+ * A module is available once the previous module is completed (module one
+ * is always available). This keeps the ten weeks sequential without a
+ * separate "unlocked" flag to maintain in the database.
+ */
+export function getModuleAvailability(
+  moduleProgressRows: ModuleProgressLike[],
+): { slug: string; week: number; title: string; status: EffectiveModuleStatus }[] {
+  const progressBySlug = new Map(moduleProgressRows.map((row) => [row.moduleSlug, row.status]));
+  let previousCompleted = true;
+
+  return PROGRAM_MODULES.map((module) => {
+    const recordedStatus = progressBySlug.get(module.slug);
+    let status: EffectiveModuleStatus;
+    if (recordedStatus === "completed") {
+      status = "completed";
+    } else if (recordedStatus === "in-progress") {
+      status = "in-progress";
+    } else if (previousCompleted) {
+      status = "available";
+    } else {
+      status = "locked";
+    }
+    previousCompleted = status === "completed";
+    return { slug: module.slug, week: module.week, title: module.title, status };
+  });
+}

@@ -10,18 +10,18 @@ import { modules, sourceRecords } from "@/db/schema";
 import { PROGRAM_MODULES } from "@/content/modules";
 
 async function seedModules() {
-  for (const module of PROGRAM_MODULES) {
+  for (const moduleDefinition of PROGRAM_MODULES) {
     await db
       .insert(modules)
       .values({
-        slug: module.slug,
-        weekNumber: module.week,
-        title: module.title,
-        contentVersion: module.contentVersion,
+        slug: moduleDefinition.slug,
+        weekNumber: moduleDefinition.week,
+        title: moduleDefinition.title,
+        contentVersion: moduleDefinition.contentVersion,
       })
       .onConflictDoUpdate({
         target: modules.slug,
-        set: { weekNumber: module.week, title: module.title, contentVersion: module.contentVersion },
+        set: { weekNumber: moduleDefinition.week, title: moduleDefinition.title, contentVersion: moduleDefinition.contentVersion },
       });
   }
   console.log(`Seeded ${PROGRAM_MODULES.length} module registry entries.`);

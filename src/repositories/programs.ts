@@ -77,14 +77,14 @@ let moduleRegistrySeeded = false;
 /** Keeps the lightweight `modules` metadata table in sync with the code-defined module content. */
 async function ensureModuleRegistrySeeded() {
   if (moduleRegistrySeeded) return;
-  for (const module of PROGRAM_MODULES) {
+  for (const moduleDefinition of PROGRAM_MODULES) {
     await db
       .insert(modules)
       .values({
-        slug: module.slug,
-        weekNumber: module.week,
-        title: module.title,
-        contentVersion: module.contentVersion,
+        slug: moduleDefinition.slug,
+        weekNumber: moduleDefinition.week,
+        title: moduleDefinition.title,
+        contentVersion: moduleDefinition.contentVersion,
       })
       .onConflictDoNothing({ target: modules.slug });
   }

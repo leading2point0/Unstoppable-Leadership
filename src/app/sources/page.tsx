@@ -16,7 +16,7 @@ export default async function SourcesPage() {
   return (
     <div className="container-page py-16">
       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Sources &amp; Attribution</p>
-      <h1 className="mt-2 font-serif text-3xl font-semibold">Where this program's ideas and citations come from</h1>
+      <h1 className="mt-2 font-serif text-3xl font-semibold">Where this program&apos;s ideas and citations come from</h1>
       <p className="mt-4 max-w-2xl text-slate">
         Every source below has been manually verified by the site owner. Quotations are shown only after separate,
         explicit verification against a lawfully obtained copy — unverified quotations are never displayed here.
