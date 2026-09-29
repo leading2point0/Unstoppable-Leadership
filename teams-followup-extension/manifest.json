@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Teams Follow-Up Flags",
+  "version": "0.1.0",
+  "description": "Flag Microsoft Teams chat and channel messages for follow up, set a follow-up date, and keep a running list. Syncs across Chrome devices.",
+  "permissions": ["storage", "alarms", "notifications"],
+  "host_permissions": [
+    "https://teams.microsoft.com/*",
+    "https://teams.cloud.microsoft/*",
+    "https://teams.live.com/*"
+  ],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://teams.microsoft.com/*",
+        "https://teams.cloud.microsoft/*",
+        "https://teams.live.com/*"
+      ],
+      "js": ["lib.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Follow-up list",
+    "default_popup": "popup.html"
+  },
+  "icons": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" }
+}

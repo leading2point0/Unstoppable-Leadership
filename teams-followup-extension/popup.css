@@ -1,0 +1,21 @@
+:root{color-scheme:light dark;--bg:#fff;--fg:#222;--mute:#666;--line:#ddd;--acc:#b45309}
+@media (prefers-color-scheme:dark){:root{--bg:#242424;--fg:#eee;--mute:#aaa;--line:#444}}
+body{margin:0;width:400px;max-height:560px;overflow:auto;background:var(--bg);color:var(--fg);font:13px Segoe UI,system-ui,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg)}
+h1{font-size:15px;margin:0}
+h2{font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin:12px 12px 4px;color:var(--mute)}
+h2.overdue{color:#b91c1c}
+.item{padding:8px 12px;border-bottom:1px solid var(--line)}
+.top{display:flex;justify-content:space-between;gap:8px}
+.who{font-weight:600}
+.due{color:var(--acc);white-space:nowrap}
+.overdue-item .due{color:#b91c1c;font-weight:600}
+.where{color:var(--mute);font-size:12px}
+.prev{margin:4px 0;color:var(--mute)}
+.note{margin:4px 0;font-style:italic}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+button,select{font:inherit;border:1px solid var(--line);background:none;color:var(--fg);border-radius:4px;padding:3px 8px;cursor:pointer}
+button:hover,select:hover,button:focus-visible,select:focus-visible{border-color:var(--acc)}
+.open{background:var(--acc);color:#fff;border-color:var(--acc)}
+.done-item{opacity:.6}
+#empty{padding:16px 12px;color:var(--mute)}
