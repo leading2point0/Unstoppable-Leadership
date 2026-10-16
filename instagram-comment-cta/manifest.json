@@ -1,0 +1,410 @@
+{
+ "metricool_blog_id": "6966414",
+ "timezone": "America/Chicago",
+ "posts": [
+  {
+   "date": "2026-10-16",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "848761642378480622",
+   "code": "GREAT",
+   "dm_link": "https://leading2point0.com/quickstart/GREAT",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-6890209564523394809.png",
+    "https://static.metricool.com/planner/202610/6966414-file-17390383720462107000.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-9232969032175708042.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-12321259560942596123.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-1284777800403402403.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-2562818669363529498.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "GREAT_slide6_Oct16.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/GREAT_slide6_Oct16.png",
+   "caption_edits": [
+    {
+     "old": "Want the free Good to Great Quick Start? Tap the link in bio and enter code GREAT.",
+     "new": "Want the free Good to Great Quick Start? Follow @leading2point0 and comment GREAT. I will send you the link."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Good to Great Quick Start Follow @leading2point0 and comment GREAT. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-17",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "6398830042024987560",
+   "code": "OWNIT",
+   "dm_link": "https://leading2point0.com/quickstart/OWNIT",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-14402603654038184187.png",
+    "https://static.metricool.com/planner/202610/6966414-file-3316507788853826170.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-7301319202783338140.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-12819540897464066419.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-3936672605511963490.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-2068933640080546456.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "OWNIT_slide6_Oct17.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/OWNIT_slide6_Oct17.png",
+   "caption_edits": [
+    {
+     "old": "Want the free Extreme Ownership Quick Start? Tap the link in bio and enter code OWNIT.",
+     "new": "Want the free Extreme Ownership Quick Start? Follow @leading2point0 and comment OWNIT. I will send you the link."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Extreme Ownership Quick Start Follow @leading2point0 and comment OWNIT. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-18",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "-9021970532834588593",
+   "code": "DARE",
+   "dm_link": "https://leading2point0.com/quickstart/DARE",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-5249949361315256565.png",
+    "https://static.metricool.com/planner/202610/6966414-file-5586208537436033800.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-15970932407639259010.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-8572523767032437581.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-4144079703112185941.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-851096251085074594.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "DARE_slide6_Oct18.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/DARE_slide6_Oct18.png",
+   "caption_edits": [
+    {
+     "old": "Want the free Dare to Lead Quick Start? Tap the link in bio and enter code DARE.",
+     "new": "Want the free Dare to Lead Quick Start? Follow @leading2point0 and comment DARE. I will send you the link."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Dare to Lead Quick Start Follow @leading2point0 and comment DARE. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-19",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "-593747888790222304",
+   "code": "EATLAST",
+   "dm_link": "https://leading2point0.com/quickstart/EATLAST",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-11174797840845531490.png",
+    "https://static.metricool.com/planner/202610/6966414-file-7704965494792900920.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-11488795298265686951.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-11644515199148227514.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-7126363298034692585.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-8084542410613159968.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "EATLAST_slide6_Oct19.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/EATLAST_slide6_Oct19.png",
+   "caption_edits": [
+    {
+     "old": "Want the free Leaders Eat Last Quick Start? Tap the link in bio and enter code EATLAST.",
+     "new": "Want the free Leaders Eat Last Quick Start? Follow @leading2point0 and comment EATLAST. I will send you the link."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Leaders Eat Last Quick Start Follow @leading2point0 and comment EATLAST. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-20",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "6426503494341250720",
+   "code": "LEVELS",
+   "dm_link": "https://leading2point0.com/quickstart/LEVELS",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-9788766988466873872.png",
+    "https://static.metricool.com/planner/202610/6966414-file-1269975826624637728.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-17932100204927217750.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-5601247114416341315.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-14540737869608517734.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-2291933043857577689.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "LEVELS_slide6_Oct20.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/LEVELS_slide6_Oct20.png",
+   "caption_edits": [
+    {
+     "old": "Swipe through The 5 Levels of Leadership by John Maxwell. Then tell us in the comments which level you are honestly leading from. Level 1 counts.",
+     "new": "Swipe through The 5 Levels of Leadership by John Maxwell. Level 1 counts."
+    },
+    {
+     "old": "Want the free 5 Levels of Leadership Quick Start? Tap the link in bio and enter code LEVELS.",
+     "new": "Want the free 5 Levels of Leadership Quick Start? Follow @leading2point0 and comment LEVELS. I will send you the link. Add the level you are honestly leading from while you are there."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Quick Start Follow @leading2point0 and comment LEVELS. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-21",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "-5920998466062168564",
+   "code": "NORULES",
+   "dm_link": "https://leading2point0.com/quickstart/NORULES",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-10899643488462309430.png",
+    "https://static.metricool.com/planner/202610/6966414-file-9257818761667790246.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-3519754206004368781.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-4790067278017626332.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-17575645005289848560.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-15208543612456688412.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "NORULES_slide6_Oct21.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/NORULES_slide6_Oct21.png",
+   "caption_edits": [
+    {
+     "old": "Comment the first rule you would delete.\n\n",
+     "new": ""
+    },
+    {
+     "old": "Want the free No Rules Rules Quick Start? Tap the link in bio and enter code NORULES.",
+     "new": "Want the free No Rules Rules Quick Start? Follow @leading2point0 and comment NORULES. I will send you the link. Add the first rule you would delete while you are there."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Quick Start Follow @leading2point0 and comment NORULES. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-22",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "-2859306132122808407",
+   "code": "ANY",
+   "dm_link": "https://leading2point0.com/quickstart/<the code the person comments>",
+   "slide_count": 5,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-17410871674190844922.png",
+    "https://static.metricool.com/planner/202610/6966414-file-10799854360804234180.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-7734005794166814077.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-3353597416173312515.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-5857908948562371949.jpeg"
+   ],
+   "replace_slide_number": 5,
+   "new_slide_file": "SERIES_slide5_Oct22.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/SERIES_slide5_Oct22.png",
+   "caption_edits": [
+    {
+     "old": "All the free Quick Starts so far: link in bio.",
+     "new": "Want a free Quick Start from the series? Follow @leading2point0 and comment its code. I will send you the link."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 5 of 5: Pick a book. Get the guide. Follow @leading2point0 and comment any code from the series. I will send you the link.",
+   "notes": "Slides 2 and 3 list the codes. Open them and check for any link in bio wording. They were not visible when this was prepared."
+  },
+  {
+   "date": "2026-10-23",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "-8918772625513494285",
+   "code": "EFFECTIVE",
+   "dm_link": "https://leading2point0.com/quickstart/EFFECTIVE",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-5555334431644784908.png",
+    "https://static.metricool.com/planner/202610/6966414-file-1740635536722247787.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-11848226384054975855.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-17661274974874383346.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-16095512988016736539.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-15783921693562089064.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "EFFECTIVE_slide6_Oct23.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/EFFECTIVE_slide6_Oct23.png",
+   "caption_edits": [
+    {
+     "old": "Want the free Effective Executive Quick Start? Tap the link in bio and enter code EFFECTIVE.",
+     "new": "Want the free Effective Executive Quick Start? Follow @leading2point0 and comment EFFECTIVE. I will send you the link."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Effective Executive Quick Start Follow @leading2point0 and comment EFFECTIVE. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-24",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "-2320236057150537172",
+   "code": "SUPERTEAMS",
+   "dm_link": "https://leading2point0.com/quickstart/SUPERTEAMS",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-13114554313562131554.png",
+    "https://static.metricool.com/planner/202610/6966414-file-16216303805628735323.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-14330051307257795118.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-1333915535751883204.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-1345814171641089424.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-11434188037759311586.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "SUPERTEAMS_slide6_Oct24.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/SUPERTEAMS_slide6_Oct24.png",
+   "caption_edits": [
+    {
+     "old": "Want the free Superteams Quick Start? Tap the link in bio and enter code SUPERTEAMS.",
+     "new": "Want the free Superteams Quick Start? Follow @leading2point0 and comment SUPERTEAMS. I will send you the link."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Superteams Quick Start Follow @leading2point0 and comment SUPERTEAMS. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-25",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "3450333253791270488",
+   "code": "SUDDENLY",
+   "dm_link": "https://leading2point0.com/quickstart/SUDDENLY",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-18381934447816733598.png",
+    "https://static.metricool.com/planner/202610/6966414-file-2689912131832190089.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-7799138472722106819.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-11835278482974745847.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-11387172188217364155.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-18423939555616337536.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "SUDDENLY_slide6_Oct25.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/SUDDENLY_slide6_Oct25.png",
+   "caption_edits": [
+    {
+     "old": "Want the free Gradually Then Suddenly Quick Start? Tap the link in bio and enter code SUDDENLY.",
+     "new": "Want the free Gradually Then Suddenly Quick Start? Follow @leading2point0 and comment SUDDENLY. I will send you the link."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Quick Start Follow @leading2point0 and comment SUDDENLY. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-26",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "7598576592277228665",
+   "code": "LION",
+   "dm_link": "https://leading2point0.com/quickstart/LION",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-9043010061796617643.png",
+    "https://static.metricool.com/planner/202610/6966414-file-5855957077038553156.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-13239643000205592168.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-12821184504237026778.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-18152153206450603762.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-9889677968900548314.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "LION_slide6_Oct26.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/LION_slide6_Oct26.png",
+   "caption_edits": [
+    {
+     "old": "Want the free In a Pit with a Lion on a Snowy Day Quick Start? Tap the link in bio and enter code LION.",
+     "new": "Want the free In a Pit with a Lion on a Snowy Day Quick Start? Follow @leading2point0 and comment LION. I will send you the link."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Quick Start Follow @leading2point0 and comment LION. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-27",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "-2259490962337543866",
+   "code": "ALLIN",
+   "dm_link": "https://leading2point0.com/quickstart/ALLIN",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-17966658668301662534.png",
+    "https://static.metricool.com/planner/202610/6966414-file-12637675119013099602.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-4728146317362839699.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-5824423009249860344.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-1668879852854229159.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-4106308889050273283.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "ALLIN_slide6_Oct27.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/ALLIN_slide6_Oct27.png",
+   "caption_edits": [
+    {
+     "old": "Want the free All In Quick Start? Tap the link in bio and enter code ALLIN.",
+     "new": "Want the free All In Quick Start? Follow @leading2point0 and comment ALLIN. I will send you the link."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free All In Quick Start Follow @leading2point0 and comment ALLIN. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-28",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "5090813142659254912",
+   "code": "LEADIQ",
+   "dm_link": "https://leading2point0.com/quickstart/LEADIQ",
+   "slide_count": 6,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-12218200923476340910.png",
+    "https://static.metricool.com/planner/202610/6966414-file-4808028144981713803.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-3314121752555838260.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-10534187987028418513.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-10742364265934939929.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-831919063127666628.jpeg"
+   ],
+   "replace_slide_number": 6,
+   "new_slide_file": "LEADIQ_slide6_Oct28.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/LEADIQ_slide6_Oct28.png",
+   "caption_edits": [
+    {
+     "old": "Comment your habit below. Writing it down is the first rep.\n\n",
+     "new": ""
+    },
+    {
+     "old": "Want the free Leadership Intelligence Quick Start? Tap the link in bio and enter code LEADIQ.",
+     "new": "Want the free Leadership Intelligence Quick Start? Follow @leading2point0 and comment LEADIQ. I will send you the link. Add your habit while you are there. Writing it down is the first rep."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 6 of 6: Get the free Quick Start Follow @leading2point0 and comment LEADIQ. I will send you the link.",
+   "notes": ""
+  },
+  {
+   "date": "2026-10-29",
+   "time": "10:00 AM America/Chicago",
+   "network": "instagram",
+   "post_uuid": "-5620700451809836120",
+   "code": "ANY",
+   "dm_link": "https://leading2point0.com/quickstart/<the code the person comments>",
+   "slide_count": 5,
+   "current_slide_urls": [
+    "https://static.metricool.com/planner/202610/6966414-file-17254933452887515672.png",
+    "https://static.metricool.com/planner/202610/6966414-file-13901416434219746448.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-2576381821641253600.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-4866096539628229453.jpeg",
+    "https://static.metricool.com/planner/202610/6966414-file-16003189219414662332.jpeg"
+   ],
+   "replace_slide_number": 5,
+   "new_slide_file": "WRAPUP_slide5_Oct29.png",
+   "new_slide_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/WRAPUP_slide5_Oct29.png",
+   "caption_edits": [
+    {
+     "old": "Comment the book you are starting with, then send this to one leader who would rather read a guide than a whole book.\n\nAll 12 free guides are still available. Link in bio, enter the code.",
+     "new": "Follow @leading2point0 and comment the code for the book you are starting with. I will send you the link. Then send this to one leader who would rather read a guide than a whole book.\n\nAll 12 codes are on the slides."
+    }
+   ],
+   "alt_text_new_for_replaced_slide": "Slide 5 of 5: Take one step on Monday. Follow @leading2point0 and comment your code from the 12. I will send you the link.",
+   "notes": "Also replace slide 1 with WRAPUP_cover1_Oct29.png (swipe panel now says: Comment your code. I will send you the link.). Slides 2 to 4 list the codes. Check them for link in bio wording.",
+   "also_replace_slide_1_with": "WRAPUP_cover1_Oct29.png",
+   "also_replace_slide_1_raw_url": "https://raw.githubusercontent.com/leading2point0/unstoppable-leadership/carousel-comment-cta/instagram-comment-cta/slides/WRAPUP_cover1_Oct29.png"
+  }
+ ]
+}
